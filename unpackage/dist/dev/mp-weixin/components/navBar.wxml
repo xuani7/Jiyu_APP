@@ -1,0 +1,1 @@
+<view class="box-bg"><uni-nav-bar vue-id="0bc3f17b-1" height="65px" shadow="{{true}}" left-icon leftText="返回" rightText="设置" bind:__l="__l"></uni-nav-bar></view>

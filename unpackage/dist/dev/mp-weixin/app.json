@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/timer/timer",
+    "pages/community/community",
+    "pages/user/user"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom",
+    "navigationBarBackgroundColor": "#F2EBD9",
+    "backgroundColor": "#F2EBD9"
+  },
+  "tabBar": {
+    "height": "50px",
+    "fontSize": "12px",
+    "color": "#000000",
+    "selectedColor": "#F2EBD9",
+    "borderStyle": "white",
+    "backgroundColor": "#66363C",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "目标",
+        "iconPath": "static/image/目标.png",
+        "selectedIconPath": "static/image/目标被选.png"
+      },
+      {
+        "pagePath": "pages/community/community",
+        "text": "社区",
+        "iconPath": "static/image/社区.png",
+        "selectedIconPath": "static/image/社区被选.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

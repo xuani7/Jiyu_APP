@@ -1,0 +1,71 @@
+{
+	"pages": [{
+            "path": "pages/index/index",
+            "style": {
+				
+            }
+		},{
+            "path": "pages/login/login",
+            "style": {
+				
+            }
+		},{
+        	"path": "pages/timer/timer",
+        	"style": {
+                
+                "backgroundColor": "transparent",
+                "app-plus": {
+                    "titleNView": false
+                }
+        	}
+        },{
+        	"path": "pages/community/community",
+        	"style": {
+        		
+        	}
+        },{
+        	"path": "pages/user/user",
+        	"style": {
+        		"navigationBarTitleText": "我"
+        	}
+    }],
+    
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+        "navigationStyle": "custom",
+		"navigationBarBackgroundColor": "#2185C5",
+		"app-plus": {
+			"background": "#2185C5"
+		}
+	},
+    
+    "tabBar": {
+        "height": "50px",
+        "fontSize": "10px",
+        "color": "#2c2c2c", // 导航栏字体颜色
+        "selectedColor": "#FFF6E5", // 选中后字体的颜色
+        "borderStyle": "white", // 底部的border颜色，只能是“black”或者“white”
+        "backgroundColor": "rgb(33,133,197,0.8)", // 底部背景颜色
+        "position": "bottom",
+        
+        /* #ifdef APP-PLUS */
+        "midButton": {
+            "iconPath": "static/image/秒表1.png",
+            "iconWidth": "40px",
+            "width": "70px" 
+        },
+        /* #endif */
+        
+    	"list": [{
+    		"pagePath": "pages/index/index",
+    		"text": "目标",
+            "iconPath": "static/image/目标.png",
+            "selectedIconPath": "static/image/目标被选.png"
+    	},{
+    		"pagePath": "pages/community/community",
+    		"text": "社区",
+            "iconPath": "static/image/社区.png",
+            "selectedIconPath": "static/image/社区被选.png"
+    	}]
+    }
+}
