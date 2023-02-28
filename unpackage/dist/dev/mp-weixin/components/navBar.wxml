@@ -1,1 +1,1 @@
-<view class="box-bg"><uni-nav-bar vue-id="0bc3f17b-1" height="65px" shadow="{{true}}" left-icon leftText="返回" rightText="设置" bind:__l="__l"></uni-nav-bar></view>
+<view class="navBar"><u-sticky vue-id="0bc3f17b-1" offsetTop="48px" bind:__l="__l" vue-slots="{{['default']}}"><uni-nav-bar vue-id="{{('0bc3f17b-2')+','+('0bc3f17b-1')}}" status-bar="{{true}}" color="#FFF6E5" backgroundColor="#2185C5" leftIcon="contact" data-event-opts="{{[['^clickLeft',[['showUser']]]]}}" bind:clickLeft="__e" bind:__l="__l"></uni-nav-bar></u-sticky></view>

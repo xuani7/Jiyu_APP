@@ -1,5 +1,9 @@
 {
   "usingComponents": {
-    "nav-bar": "/components/navBar"
+    "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+    "nav-bar": "/components/navBar",
+    "lx-calendar": "/components/lx-calendar/lx-calendar",
+    "target": "/components/target",
+    "u-charts": "/components/charts"
   }
 }

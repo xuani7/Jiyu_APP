@@ -28,4 +28,10 @@
 </script>
 
 <style lang="scss">
+	.navBar{
+		position: -webkit-sticky;
+		position: sticky;
+		top: var(--window-top);
+		z-index: 100;
+	}
 </style>

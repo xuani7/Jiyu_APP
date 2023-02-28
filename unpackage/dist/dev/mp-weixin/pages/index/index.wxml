@@ -1,1 +1,1 @@
-<view class="content"><nav-bar vue-id="8dd740cc-1" bind:__l="__l"></nav-bar>目标</view>
+<view class="container"><nav-bar vue-id="8dd740cc-1" bind:__l="__l"></nav-bar><target vue-id="8dd740cc-2" bind:__l="__l"></target><lx-calendar vue-id="8dd740cc-3" dot_lists="{{dot_lists}}" bind:__l="__l"></lx-calendar><uni-card class="chartsContainer" vue-id="8dd740cc-4" isShadow="{{true}}" bind:__l="__l" vue-slots="{{['default']}}"><u-charts class="vue-ref" vue-id="{{('8dd740cc-5')+','+('8dd740cc-4')}}" data-ref="uCharts" bind:__l="__l"></u-charts></uni-card></view>

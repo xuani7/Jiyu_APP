@@ -10,16 +10,15 @@
   "window": {
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom",
-    "navigationBarBackgroundColor": "#F2EBD9",
-    "backgroundColor": "#F2EBD9"
+    "navigationBarBackgroundColor": "#2185C5"
   },
   "tabBar": {
     "height": "50px",
-    "fontSize": "12px",
-    "color": "#000000",
-    "selectedColor": "#F2EBD9",
+    "fontSize": "10px",
+    "color": "#2c2c2c",
+    "selectedColor": "#FFF6E5",
     "borderStyle": "white",
-    "backgroundColor": "#66363C",
+    "backgroundColor": "rgb(33,133,197,0.8)",
     "position": "bottom",
     "list": [
       {
