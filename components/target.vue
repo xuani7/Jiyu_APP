@@ -28,7 +28,7 @@
             <u-divider text="目标" textColor="#7ecefd" lineColor="#2185c5"></u-divider>
 
             <view class="target">
-                <u-swipe-action>
+                <u-swipe-action disabled @click="changeTarget()">
                     <u-swipe-action-item :options="options">
                         <view class="swipe-action">
                             <view class="swipe-action__content">
@@ -49,7 +49,7 @@
             return {
                 timeData: {},
                 targetDate: 123,
-                targetText: "还没有设置目标哦~ 请左滑添加",
+                targetText: "还没有设置目标哦~ 请点击添加",
                 options: [{
                     text: '更改',
                     style: {
@@ -67,7 +67,10 @@
         methods: {
             onChange(e) {
                 this.timeData = e
-            }
+            },
+			changeTarget(){
+				
+			}
         }
     }
 </script>

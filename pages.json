@@ -26,26 +26,29 @@
         },{
         	"path": "pages/user/user",
         	"style": {
-        		"navigationBarTitleText": "我"
+				"app-plus": {
+					"animationType": "zoom-fade-in",
+					"animationDuration": 300
+				}
         	}
     }],
     
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
         "navigationStyle": "custom",
-		"navigationBarBackgroundColor": "#2185C5",
+		"navigationBarBackgroundColor": "#F8F8F8",
 		"app-plus": {
-			"background": "#2185C5"
+			"background": "#F8F8F8"
 		}
 	},
     
     "tabBar": {
-        "height": "50px",
-        "fontSize": "10px",
+        "height": "60px",
+        "fontSize": "12px",
         "color": "#2c2c2c", // 导航栏字体颜色
-        "selectedColor": "#FFF6E5", // 选中后字体的颜色
-        "borderStyle": "white", // 底部的border颜色，只能是“black”或者“white”
-        "backgroundColor": "rgb(33,133,197,0.8)", // 底部背景颜色
+        "selectedColor": "#7ECEFD", // 选中后字体的颜色
+        "borderStyle": "black", // 底部的border颜色，只能是“black”或者“white”
+        "backgroundColor": "#FFFFFF", // 底部背景颜色
         "position": "bottom",
         
         /* #ifdef APP-PLUS */

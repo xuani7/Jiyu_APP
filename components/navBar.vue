@@ -1,27 +1,31 @@
 <template>
     <view class="navBar">
-        <u-sticky offsetTop="48px">
-            <uni-nav-bar status-bar color="#FFF6E5" backgroundColor="#2185C5" leftIcon="contact"
-                @clickLeft="showUser()" />
+        <u-sticky offsetTop="44px">
+            <uni-nav-bar status-bar color={$font-color-base} style={background-color:$page-color-base;} leftIcon="contact"
+                @clickLeft="showUser()" :title="title" />
         </u-sticky>
     </view>
 </template>
 
 <script>
+	
     export default {
         name: "navBar",
+		props:['title'],
         data() {
             return {
-                height: "48px"
+                height: "44px"
             }
         },
         methods: {
             showUser() {
-                uni.navigateTo({
-                    url: "/pages/user/user",
-                    animationType: 'slide-in-left',
-                    animationDuration: 300
-                });
+				// #ifdef APP-PLUS
+				uni.navigateTo({
+				    url: "/pages/user/user",
+				    animationType: 'fade-in',
+				    animationDuration: 300
+				});
+				// #endif
             }
         },
     }
