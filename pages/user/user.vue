@@ -36,6 +36,11 @@
 			<text class="cell-tit">我的收藏</text>
 			<text class="cell-more yticon icon-you"></text>
 		</view>
+		<view class="list-cell b-b" @click="navTo('我的关注')" hover-class="cell-hover" :hover-stay-time="50">
+			<text class="cell-tit">我的关注</text>
+			<text class="cell-more yticon icon-you"></text>
+		</view>
+		
 		<view class="list-cell" @click="navTo('反馈帮助')" hover-class="cell-hover" :hover-stay-time="50">
 			<text class="cell-tit">反馈帮助</text>
 			<text class="cell-more yticon icon-you"></text>
@@ -46,11 +51,7 @@
 			<switch checked color="#7ECEFD" @change="switchChange" />
 		</view>
 		
-		<view class="list-cell m-t b-b" @click="navTo('清除缓存')" hover-class="cell-hover" :hover-stay-time="50">
-			<text class="cell-tit">清除缓存</text>
-			<text class="cell-more yticon icon-you"></text>
-		</view>
-		<view class="list-cell b-b" @click="navTo('关于Dcloud')" hover-class="cell-hover" :hover-stay-time="50">
+		<view class="list-cell b-b" @click="navTo('关于机遇')" hover-class="cell-hover" :hover-stay-time="50">
 			<text class="cell-tit">关于我们</text>
 			<text class="cell-more yticon icon-you"></text>
 		</view>

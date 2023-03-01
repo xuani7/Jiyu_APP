@@ -1,11 +1,26 @@
 <template>
     <view class="container" @touchstart="touchStart" @touchend="touchEnd">
         <navBar :title="title"></navBar>
-        <target @click="changeTarget()" ref="target"></target>
+        <target @click.native="changeTarget" ref="target"></target>
         <lxCalendar :dot_lists="dot_lists"></lxCalendar>
         <uni-card isShadow class="chartsContainer">
             <uCharts ref="uCharts"></uCharts>
         </uni-card>
+		<u-popup :show="show" mode="center" border-radius="14" @close="changeTarget" width="auto" height="auto">
+			<u-card margin="30rpx" class="form">
+				<u-form :model="form">
+					<u-form-item label="日期">
+						<uni-datetime-picker type="date" v-model="form.targetDate"></uni-datetime-picker>
+					</u-form-item>
+					<u-form-item label="目标">
+						<u-input v-model="form.targetInfo" type="textarea" border-color="#7ECEFD" auto-height />
+					</u-form-item>
+					<u-form-item>
+						<button type="primary" size="mini" @tap="submitForm">提交</button>
+					</u-form-item>
+				</u-form>
+			</u-card>
+		</u-popup>
     </view>
 </template>
 
@@ -27,13 +42,23 @@
                 dot_lists: ['2023-2-15', '2023-2-22'],
 				//初始化点击位置的x坐标
 				startX:0,
-				show:false
+				show:false,
+				showDate:false,
+				dateMode:'date',
+				form:{
+					targetInfo:'',
+					targetDate:'2023-3-30'
+				}
             }
         },
         methods: {
-            onClick(e) {
-                console.log(e)
-            },
+            submitForm(){
+				
+			},
+			
+			changeDateShow(){
+				showDate = true
+			},
 			
 			/**
 			* 触摸开始
@@ -67,7 +92,10 @@
 					}
 				}
 			},
-			
+			changeTarget(){
+				this.show = !this.show
+				console.log("切换~"+this.show);
+			}
         },
         onLoad() {
             this.$nextTick(function() {
@@ -87,4 +115,9 @@
     .chartsContainer{
         height: 320px;
     }
+	.form{
+		width: 300px;
+		height: 150px;
+		padding: 30px;
+	}
 </style>
