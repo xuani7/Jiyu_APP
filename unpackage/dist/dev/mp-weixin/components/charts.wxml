@@ -1,0 +1,1 @@
+<view class="charts-box data-v-cd341a60"><qiun-data-charts vue-id="d94e2f94-1" type="column" opts="{{opts}}" chartData="{{chartData}}" errorMessage="出错啦~点击刷新" ontouch="{{true}}" class="data-v-cd341a60" bind:__l="__l"></qiun-data-charts></view>

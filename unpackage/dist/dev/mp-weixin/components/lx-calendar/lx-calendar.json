@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+    "u-button": "/uni_modules/uview-ui/components/u-button/u-button"
+  },
+  "component": true
+}
