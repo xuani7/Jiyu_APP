@@ -340,7 +340,14 @@ var render = function () {
             [
               _c(
                 "u-form",
-                { attrs: { _i: 8 } },
+                {
+                  attrs: { _i: 8 },
+                  on: {
+                    submit: function ($event) {
+                      return _vm.$handleViewEvent($event)
+                    },
+                  },
+                },
                 [
                   _c(
                     "u-form-item",
@@ -351,7 +358,7 @@ var render = function () {
                         model: {
                           value: _vm._$g(10, "v-model"),
                           callback: function () {},
-                          expression: "form.targetDate",
+                          expression: "targetInfo.targetDate",
                         },
                       }),
                     ],
@@ -366,30 +373,31 @@ var render = function () {
                         model: {
                           value: _vm._$g(12, "v-model"),
                           callback: function () {},
-                          expression: "form.targetInfo",
+                          expression: "targetInfo.targetText",
                         },
                       }),
                     ],
                     1
                   ),
+                  _c("v-uni-button", {
+                    attrs: {
+                      type: "default",
+                      size: "mini",
+                      "form-type": "reset",
+                      _i: 13,
+                    },
+                  }),
                   _c(
-                    "u-form-item",
-                    { attrs: { _i: 13 } },
-                    [
-                      _c(
-                        "v-uni-button",
-                        {
-                          attrs: { type: "primary", size: "mini", _i: 14 },
-                          on: {
-                            click: function ($event) {
-                              return _vm.$handleViewEvent($event)
-                            },
-                          },
-                        },
-                        [_vm._v("提交")]
-                      ),
-                    ],
-                    1
+                    "v-uni-button",
+                    {
+                      attrs: {
+                        type: "primary",
+                        size: "mini",
+                        "form-type": "submit",
+                        _i: 14,
+                      },
+                    },
+                    [_vm._v("提交")]
                   ),
                 ],
                 1
@@ -21638,7 +21646,18 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "uni-view",
-    { staticClass: _vm._$g(0, "sc"), attrs: { _i: 0 } },
+    {
+      staticClass: _vm._$g(0, "sc"),
+      attrs: { _i: 0 },
+      on: {
+        touchstart: function ($event) {
+          return _vm.$handleViewEvent($event)
+        },
+        touchend: function ($event) {
+          return _vm.$handleViewEvent($event)
+        },
+      },
+    },
     [
       _c("navBar", { attrs: { _i: 1 } }),
       _vm._l(_vm._$g(2, "f"), function (item, index, $20, $30) {
@@ -21803,11 +21822,15 @@ try {
   components = {
     uniCard: __webpack_require__(/*! @/uni_modules/uni-card/components/uni-card/uni-card.vue */ 5)
       .default,
+    uLine: __webpack_require__(/*! @/uni_modules/uview-ui/components/u-line/u-line.vue */ 73)
+      .default,
     uniGrid: __webpack_require__(/*! @/uni_modules/uni-grid/components/uni-grid/uni-grid.vue */ 344)
       .default,
     uniGridItem:
       __webpack_require__(/*! @/uni_modules/uni-grid/components/uni-grid-item/uni-grid-item.vue */ 352)
         .default,
+    uButton: __webpack_require__(/*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 174)
+      .default,
     uniIcons:
       __webpack_require__(/*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 89)
         .default,
@@ -21895,6 +21918,10 @@ var render = function () {
                         "v-uni-text",
                         {
                           staticClass: _vm._$g(8, "sc"),
+                          staticStyle: {
+                            color: "#282c35",
+                            "font-weight": "bold",
+                          },
                           attrs: { _i: 8 },
                           on: {
                             click: function ($event) {
@@ -21920,34 +21947,35 @@ var render = function () {
             ],
             1
           ),
-          _c(
-            "uni-view",
-            { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
-            [_vm._v(_vm._$g(10, "t0-0"))]
-          ),
+          _c("u-line", { attrs: { _i: 10 } }),
           _c(
             "uni-view",
             { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
+            [_vm._v(_vm._$g(11, "t0-0"))]
+          ),
+          _c(
+            "uni-view",
+            { staticClass: _vm._$g(12, "sc"), attrs: { _i: 12 } },
             [
               _c(
                 "uni-view",
-                { staticClass: _vm._$g(12, "sc"), attrs: { _i: 12 } },
-                _vm._l(_vm._$g(13, "f"), function (item, index, $20, $30) {
+                { staticClass: _vm._$g(13, "sc"), attrs: { _i: 13 } },
+                _vm._l(_vm._$g(14, "f"), function (item, index, $20, $30) {
                   return _c(
                     "uni-view",
                     {
                       key: item,
-                      staticClass: _vm._$g("13-" + $30, "sc"),
-                      attrs: { _i: "13-" + $30 },
+                      staticClass: _vm._$g("14-" + $30, "sc"),
+                      attrs: { _i: "14-" + $30 },
                     },
                     [
                       _c("v-uni-image", {
-                        staticClass: _vm._$g("14-" + $30, "sc"),
-                        style: _vm._$g("14-" + $30, "s"),
+                        staticClass: _vm._$g("15-" + $30, "sc"),
+                        style: _vm._$g("15-" + $30, "s"),
                         attrs: {
-                          src: _vm._$g("14-" + $30, "a-src"),
+                          src: _vm._$g("15-" + $30, "a-src"),
                           mode: "aspectFill",
-                          _i: "14-" + $30,
+                          _i: "15-" + $30,
                         },
                         on: {
                           click: function ($event) {
@@ -21967,24 +21995,23 @@ var render = function () {
           _c(
             "uni-view",
             {
-              staticClass: _vm._$g(15, "sc"),
-              style: _vm._$g(15, "s"),
-              attrs: { _i: 15 },
+              staticClass: _vm._$g(16, "sc"),
+              style: _vm._$g(16, "s"),
+              attrs: { _i: 16 },
             },
             [
               _c(
                 "uni-grid",
-                { attrs: { _i: 16 } },
+                { attrs: { _i: 17 } },
                 [
                   _c(
                     "uni-grid-item",
-                    { attrs: { _i: 17 } },
+                    { attrs: { _i: 18 } },
                     [
                       _c(
-                        "span",
+                        "u-button",
                         {
-                          style: _vm._$g(18, "s"),
-                          attrs: { _i: 18 },
+                          attrs: { _i: 19 },
                           on: {
                             click: function ($event) {
                               return _vm.$handleViewEvent($event, {
@@ -21995,10 +22022,14 @@ var render = function () {
                         },
                         [
                           _c("uni-icons", {
-                            style: _vm._$g(19, "s"),
-                            attrs: { _i: 19 },
+                            style: _vm._$g(20, "s"),
+                            attrs: { _i: 20 },
                           }),
-                          _vm._v(_vm._$g(18, "t1-0")),
+                          _c(
+                            "v-uni-text",
+                            { style: _vm._$g(21, "s"), attrs: { _i: 21 } },
+                            [_vm._v(_vm._$g(21, "t0-0"))]
+                          ),
                         ],
                         1
                       ),
@@ -22007,13 +22038,12 @@ var render = function () {
                   ),
                   _c(
                     "uni-grid-item",
-                    { attrs: { _i: 20 } },
+                    { attrs: { _i: 22 } },
                     [
                       _c(
-                        "span",
+                        "u-button",
                         {
-                          style: _vm._$g(21, "s"),
-                          attrs: { _i: 21 },
+                          attrs: { _i: 23 },
                           on: {
                             click: function ($event) {
                               return _vm.$handleViewEvent($event, {
@@ -22024,10 +22054,14 @@ var render = function () {
                         },
                         [
                           _c("uni-icons", {
-                            style: _vm._$g(22, "s"),
-                            attrs: { _i: 22 },
+                            style: _vm._$g(24, "s"),
+                            attrs: { _i: 24 },
                           }),
-                          _vm._v(_vm._$g(21, "t1-0")),
+                          _c(
+                            "v-uni-text",
+                            { style: _vm._$g(25, "s"), attrs: { _i: 25 } },
+                            [_vm._v(_vm._$g(25, "t0-0"))]
+                          ),
                         ],
                         1
                       ),
@@ -22036,13 +22070,12 @@ var render = function () {
                   ),
                   _c(
                     "uni-grid-item",
-                    { attrs: { _i: 23 } },
+                    { attrs: { _i: 26 } },
                     [
                       _c(
-                        "span",
+                        "u-button",
                         {
-                          staticStyle: { color: "#7ECEFD" },
-                          attrs: { _i: 24 },
+                          attrs: { _i: 27 },
                           on: {
                             click: function ($event) {
                               return _vm.$handleViewEvent($event, {
@@ -22057,8 +22090,19 @@ var render = function () {
                               "margin-right": "2px",
                               color: "gray",
                             },
-                            attrs: { _i: 25 },
+                            attrs: { _i: 28 },
                           }),
+                          _c(
+                            "v-uni-text",
+                            {
+                              staticStyle: {
+                                color: "gray",
+                                "font-size": "14px",
+                              },
+                              attrs: { _i: 29 },
+                            },
+                            [_vm._v(_vm._$g(29, "t0-0"))]
+                          ),
                         ],
                         1
                       ),
@@ -22585,7 +22629,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../Program Files/HBuilderX.3.7.3.20230223/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 13);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 想法图片排列样式 */\n.uni-list-chat__content-extra-text[data-v-307deb38]{\n\tcolor: #007AFF;\n}\n.dynamic[data-v-307deb38]{\n\twidth: 100%;\n}\n.allImage[data-v-307deb38] {\n\tdisplay: flex;\n\tmargin-top: 10rpx;\n\tflex-wrap: wrap;\n\tjustify-content: flex-start;\n}\n.imgList[data-v-307deb38]{\n\tmargin: 0 3%;\n}\n.images[data-v-307deb38]:not(:nth-child(3n)) {\n\t/* margin-right: 10rpx; */\n}\n.text[data-v-307deb38]{\n\tmargin: 1% 3% 2%;\n}\n.images[data-v-307deb38] {\n\tmargin-right: 10rpx;\n\tdisplay: inline-block;\n}\n.operate[data-v-307deb38]{\n\twidth: 94%;\n\tpadding: 3%;\n\tfont-size: 14px;\n}\n.chat-custom-right[data-v-307deb38] {\n    flex: 1;\n\n    display: flex;\n\n    flex-direction: column;\n    justify-content: space-between;\n    align-items: flex-end;\n}\n.chat-custom-text[data-v-307deb38] {\n    font-size: 12px;\n    color: #999;\n}\n.bottom-line[data-v-307deb38]{\n\tborder-bottom: 10px solid #efefef;\n}\n.user__container[data-v-307deb38]{\n\tdisplay: flex;\n\t/* -webkit-flex-direction: row; */\n\tflex-direction: row;\n\t/* -webkit-flex: 1; */\n\tflex: 1;\n\tpadding: 10px 15px;\n\tposition: relative;\n\toverflow: hidden;\n}\n.user__header[data-v-307deb38]{\n\tdisplay: flex;\n\twidth: 45px;\n\theight: 45px;\n\t-webkit-border-radius: 5px;\n\tborder-color: #eee;\n\tborder-width: 1px;\n\tborder-style: solid;\n\toverflow: hidden;\n\tborder-radius: 50px;\n}\n.user__header-image[data-v-307deb38]{\n\tdisplay: flex;\n\talign-content: center;\n\tflex-direction: row;\n\tjustify-content: center;\n\talign-items: center;\n\tflex-wrap: wrap-reverse;\n\twidth: 45px;\n\theight: 45px;\n\tborder-radius: 5px;\n\tborder-color: #eee;\n\tborder-width: 1px;\n\tborder-style: solid;\n\toverflow: hidden;\n}\n.user__content[data-v-307deb38]{\n\tdisplay: flex;\n\tflex-direction: row;\n\tflex: 1;\n\toverflow: hidden;\n\tpadding: 2px 0;\n}\n.user__content-main[data-v-307deb38]{\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: space-between;\n\tpadding-left: 10px;\n\tflex: 1;\n\toverflow: hidden;\n}\n.user__content-note[data-v-307deb38]{\n\tmargin-top: 3px;\n\tcolor: #999;\n\tfont-size: 12px;\n\tfont-weight: normal;\n\toverflow: hidden;\n}\n.user__focus-on[data-v-307deb38]{\n\tpadding: 3px 10px;\n\tborder: 1px solid #fb5f5f;\n\tcolor: #fb5f5f;\n\tdisplay: flex;\n\tfont-size: 14px;\n\tborder-radius: 3px;\n}\n.user__focus-off[data-v-307deb38]{\n\tpadding: 3px;\n\tcolor: gray;\n\tfont-size: 14px;\n}\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 想法图片排列样式 */\n.uni-list-chat__content-extra-text[data-v-307deb38]{\n\tcolor: #007AFF;\n}\n.dynamic[data-v-307deb38]{\n\twidth: 100%;\n}\n.allImage[data-v-307deb38] {\n\tdisplay: flex;\n\tmargin-top: 10rpx;\n\tflex-wrap: wrap;\n\tjustify-content: flex-start;\n}\n.imgList[data-v-307deb38]{\n\tmargin: 0 3%;\n}\n.images[data-v-307deb38]:not(:nth-child(3n)) {\n\t/* margin-right: 10rpx; */\n}\n.text[data-v-307deb38]{\n\tmargin: 1% 3% 2%;\n}\n.images[data-v-307deb38] {\n\tmargin-right: 10rpx;\n\tdisplay: inline-block;\n}\n.operate[data-v-307deb38]{\n\twidth: 94%;\n\tpadding: 3%;\n\tfont-size: 14px;\n}\n.chat-custom-right[data-v-307deb38] {\n    flex: 1;\n\n    display: flex;\n\n    flex-direction: column;\n    justify-content: space-between;\n    align-items: flex-end;\n}\n.chat-custom-text[data-v-307deb38] {\n    font-size: 12px;\n    color: #999;\n}\n.bottom-line[data-v-307deb38]{\n\tborder-bottom: 10px solid #efefef;\n}\n.user__container[data-v-307deb38]{\n\tdisplay: flex;\n\t/* -webkit-flex-direction: row; */\n\tflex-direction: row;\n\t/* -webkit-flex: 1; */\n\tflex: 1;\n\tpadding: 10px 15px;\n\tposition: relative;\n\toverflow: hidden;\n}\n.user__header[data-v-307deb38]{\n\tdisplay: flex;\n\twidth: 45px;\n\theight: 45px;\n\t-webkit-border-radius: 5px;\n\tborder-color: #eee;\n\tborder-width: 1px;\n\tborder-style: solid;\n\toverflow: hidden;\n\tborder-radius: 50px;\n}\n.user__header-image[data-v-307deb38]{\n\tdisplay: flex;\n\talign-content: center;\n\tflex-direction: row;\n\tjustify-content: center;\n\talign-items: center;\n\tflex-wrap: wrap-reverse;\n\twidth: 45px;\n\theight: 45px;\n\tborder-radius: 5px;\n\tborder-color: #eee;\n\tborder-width: 1px;\n\tborder-style: solid;\n\toverflow: hidden;\n}\n.user__content[data-v-307deb38]{\n\tdisplay: flex;\n\tflex-direction: row;\n\tflex: 1;\n\toverflow: hidden;\n\tpadding: 2px 0;\n}\n.user__content-main[data-v-307deb38]{\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: space-between;\n\tpadding-left: 10px;\n\tflex: 1;\n\toverflow: hidden;\n}\n.user__content-note[data-v-307deb38]{\n\tmargin-top: 3px;\n\tcolor: #999;\n\tfont-size: 12px;\n\tfont-weight: normal;\n\toverflow: hidden;\n}\n.user__focus-on[data-v-307deb38]{\n\tpadding: 3px 10px;\n\tborder: 1px solid #fb5f5f;\n\tcolor: #fb5f5f;\n\tdisplay: flex;\n\tfont-size: 14px;\n\tborder-radius: 3px;\n}\n.user__focus-off[data-v-307deb38]{\n\tpadding: 3px;\n\tcolor: gray;\n\tfont-size: 14px;\n}\n.cell-hover[data-v-307deb38]{\n\tbackground:#fafafa;\n}\n\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -22765,7 +22809,7 @@ var render = function () {
                     [
                       _c("v-uni-image", {
                         staticStyle: { width: "30px", height: "30px" },
-                        attrs: { src: "/static/icon/setting.png", _i: 12 },
+                        attrs: { src: "/static/user/set.png", _i: 12 },
                       }),
                     ],
                     1

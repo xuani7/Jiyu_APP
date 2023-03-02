@@ -10,39 +10,40 @@
 			</view>
 			<view class="user__content">
 				<view class="user__content-main">
-					<text class="user__content-title uni-ellipsis" @click.stop="clickUser()">{{ name }}</text>
+					<text class="user__content-title uni-ellipsis" style="color: #282c35; font-weight: bold;" @click.stop="clickUser()">{{ name }}</text>
 					<text class="user__content-note uni-ellipsis">{{ timestampFormat(publishTime) }}</text>
 				</view>
 			</view>
 		</view>
 		
-		
+		<u-line color="#7ECEFD"/>
 		<view class="text">{{content}}</view>
 		<view class="allImage">
 			<view class="imgList">
-				<view class="images" v-for="(item,index) in imgList" :key="index">
+				<view class="images" v-for="(item,index) in imgList" :key="item.id">
 					<image @click.stop="previewImg()" class="oneimg" :src="item" mode="aspectFill" :style="{width:imgWidth+'px','max-height':imgHeight+'px'}"></image>
 				</view>
 			</view>
 		</view>
-		<view class="operate" :style="'width: 100%;display:'+operateDisplay">
+		<view class="operate" :style="'margin-top: 10px;width: 100%;display:'+operateDisplay" >
 			<uni-grid :column="3" :showBorder="false"  :square="false" >
 			    <uni-grid-item>
-			        <span :style="'color:'+thumbsupColor" @click.stop="clickThumbsup()">
+			        <u-button shape="square" size="mini" hover-class="cell-hover" :hover-stay-time="50" color="#FFFFFF" @click.stop="clickThumbsup()">
 						<uni-icons type="hand-up-filled" size="18" :style="'margin-right: 2px;color:'+thumbsupColor"></uni-icons>
-						{{likeNumber?likeNumber:'点赞'}}
-					</span>
+						<text :style="'font-size: 14px; color:'+thumbsupColor">{{likeNumber?likeNumber:'点赞'}}</text>	
+					</u-button>
 			    </uni-grid-item>
 			    <uni-grid-item >
-			        <span :style="'color:'+heartColor"  @click.stop="clickGiveReward()">
+			        <u-button shape="square" size="mini" hover-class="cell-hover" :hover-stay-time="50" color="#FFFFFF"  @click.stop="clickGiveReward()">
 						<uni-icons type="star-filled" size="18" :style="'margin-right: 2px;color:'+heartColor"></uni-icons>
-						{{giveRewardNumber?giveRewardNumber:'打赏'}}
-					</span>
+						<text :style="'font-size: 14px; color:'+heartColor">{{giveRewardNumber?giveRewardNumber:'打赏'}}</text>
+					</u-button>
 			    </uni-grid-item>
 			    <uni-grid-item >
-					<span  style="color:#7ECEFD"   @click.stop="clickChat()">
+					<u-button shape="square" size="mini" hover-class="cell-hover" :hover-stay-time="50" color="#FFFFFF" @click.stop="clickChat()">
 						<uni-icons type="redo-filled" size="18" style="margin-right: 2px;color:gray"></uni-icons>
-					</span>
+						<text style="color: gray; font-size: 14px;" >{{'转发'}}</text>
+					</u-button>
 			    </uni-grid-item>
 			</uni-grid>
 		</view>
@@ -115,7 +116,6 @@
 			if(this.userNoShow){
 				this.userDisplay = 'none';
 			}
-			console.log(this.operateNoShow);
 			if(this.operateNoShow){
 				this.operateDisplay = 'none';
 			}
@@ -355,6 +355,8 @@
 		font-size: 14px;
 	}
 	
-	
+	.cell-hover{
+		background:#fafafa;
+	}
 	
 </style>

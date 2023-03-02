@@ -2,7 +2,7 @@
     <view class="targetContainer">
         <uni-card isShadow>
 
-            <u-count-down :time="30 * 60 * 60 * 1000" format="DD:HH:mm:ss" autoStart millisecond @change="onChange">
+            <u-count-down :time="this.targetInfo.targetDate-0" format="DD:HH:mm:ss" autoStart millisecond @change="onChange">
                 <view class="time">
                     <view class="time__custom">
                         <text class="time__custom__item">{{ timeData.days>=10?timeData.days:'0'+timeData.days}}</text>
@@ -29,10 +29,10 @@
 
             <view class="target">
                 <u-swipe-action disabled="true">
-                    <u-swipe-action-item :options="options">
+                    <u-swipe-action-item>
                         <view class="swipe-action">
                             <view class="swipe-action__content">
-                                <text class="swipe-action__content__text">{{targetText}}</text>
+                                <text class="swipe-action__content__text">{{this.targetInfo.targetText}}</text>
                             </view>
                         </view>
                     </u-swipe-action-item>
@@ -47,29 +47,30 @@
         name: "target",
         data() {
             return {
-                timeData: {},
-                targetDate: 123,
-                targetText: "还没有设置目标哦~ 请点击添加",
-                options: [{
-                    text: '更改',
-                    style: {
-                        backgroundColor: "#7ECEFD",
-                        width: '70px',
-                        height: '30px',
-                        icon:'star-fill',
-                        iconSize: '20px',
-                        borderRadius: '6px',
-                        margin: '6px'
-                    }
-                }]
+				timeData:{},
+				nowTime:0,
+				targetInfo:{
+					user_id:'',
+					_id:'',
+					targetDate:"0",
+					targetText: "还没有设置目标哦~ 请点击添加",
+				}
             };
         },
         methods: {
             onChange(e) {
-                this.timeData = e
+                this.timeData = e 
             },
-
-        }
+			getTargetInfo(e){
+				uniCloud.callFunction({
+					name:"getTargetInfo",
+					data:{}
+				}).then(res => {
+					this.targetInfo = res.result.data[0]
+					this.nowTime = Date.now()
+				})
+			},
+        },
     }
 </script>
 

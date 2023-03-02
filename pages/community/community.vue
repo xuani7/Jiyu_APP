@@ -1,7 +1,7 @@
 <template>
-    <view class="container">
+    <view class="container" @touchstart="touchStart" @touchend="touchEnd">
         <navBar :title="title"></navBar>
-		<Dynamic v-for="(item,index) in list" key="index"
+		<Dynamic v-for="(item,index) in list" :key="item._id"
 		    :imgList="item.imgList" 
 		    :avatar="item.avatar"
 		    :name="item.name"
@@ -34,96 +34,8 @@ import { methods } from '../../uni_modules/uview-ui/libs/mixin/mixin'
         data() {
             return {
                 title: "社区",
-				list:[
-				        {
-				            id:1,
-				            avatar:'../../static/image/维克兹.jpg',
-				            name:'小新',
-				            publishTime:1617086756,
-				            content:'中国外交官这样讽加拿大总理，算不算骂？该不该骂？',
-				            imgList:[
-				                '../../static/image/维克兹.jpg',
-				                '../../static/image/维克兹.jpg',
-				            ],
-				            isLike:true,
-				            isGiveReward:true,
-				            likeNumber:2,
-				            giveRewardNumber:2,
-				            chatNumber:2,
-				            isFocusOn:true,
-				        },
-				        
-				        {
-				            id:2,
-				            avatar:'../../static/image/维克兹.jpg',
-				            name:'小白',
-				            publishTime:1617036656,
-				            content:'  足不出户享国内核医学领域顶级专家云诊断，“中山-联影”分子影像远程互联融合创新中心揭牌 ',
-				            imgList:[
-				                '../../static/image/维克兹.jpg',
-				            ],
-				            isLike:false,
-				            isGiveReward:false,
-				            likeNumber:0,
-				            giveRewardNumber:0,
-				            chatNumber:2,
-				            isFocusOn:false,
-				        },
-				        {
-				            id:3,
-				            avatar:'../../static/image/维克兹.jpg',
-				            name:'小新',
-				            publishTime:1617046556,
-				            content:'  外交部：一小撮国家和个人编造所谓新疆“强迫劳动”的故事，其心何其毒也！ ',
-				            imgList:[
-				                '../../static/image/维克兹.jpg',
-				                '../../static/image/维克兹.jpg',
-				                '../../static/image/维克兹.jpg',
-				                '../../static/image/维克兹.jpg',
-				                '../../static/image/维克兹.jpg',
-				            ],
-				            isLike:true,
-				            isGiveReward:false,
-				            likeNumber:4,
-				            giveRewardNumber:22,
-				            chatNumber:52,
-				        },
-				        {
-				            id:4,
-				            avatar:'../../static/image/维克兹.jpg',
-				            name:'小龙马',
-				            publishTime:1616086456,
-				            content:'DCloud有800万开发者,uni统计手机端月活12亿。是开发者数量和案例最丰富的多端开发框架。 欢迎知名开发商提交案例或接入uni统计。 新冠抗疫专区案例 uni-app助力',
-				            imgList:[
-				                '../../static/image/维克兹.jpg',
-				                '../../static/image/维克兹.jpg',
-				                '../../static/image/维克兹.jpg',
-				            ],
-				            isLike:true,
-				            isGiveReward:false,
-				            likeNumber:25,
-				            giveRewardNumber:0,
-				            chatNumber:7,
-				        },
-				        {
-				            id:5,
-				            avatar:'../../static/image/维克兹.jpg',
-				            name:'风清扬',
-				            publishTime:1607086356,
-				            content:'划个水',
-				            imgList:[
-				                '../../static/image/维克兹.jpg',
-				                '../../static/image/维克兹.jpg',
-				                '../../static/image/维克兹.jpg',
-				                '../../static/image/维克兹.jpg',
-				            ],
-				            isLike:true,
-				            isGiveReward:true,
-				            likeNumber:3,
-				            giveRewardNumber:2,
-				            chatNumber:2,
-				        }
-				]
+				startX:0,
+				list:[]
             }
         },
 		methods: {
@@ -132,12 +44,6 @@ import { methods } from '../../uni_modules/uview-ui/libs/mixin/mixin'
 			},
 			// 点击用户信息
 			clickUser(e){
-			    console.log(e);
-			    console.log('childUser');
-			},
-			// 点击关注
-			clickFocus(e){
-			    this.list[e].isFocusOn = this.list[e].isFocusOn ? false : true;
 			    console.log(e);
 			    console.log('childUser');
 			},
@@ -155,8 +61,58 @@ import { methods } from '../../uni_modules/uview-ui/libs/mixin/mixin'
 			clickChat(e){
 			    console.log(e);
 			    console.log('clickChat');
-			}
+			},
+			getArticles(e){
+				uniCloud.callFunction({
+					name:"getArticles",
+					data:{}
+				}).then(res => {
+					this.list = res.result.data
+				})
+				if(e === 1){
+					uni.stopPullDownRefresh()
+				}
+			},
+			
+			/**
+			* 触摸开始
+			* @param {Object} e
+			*/
+			touchStart: function (e) {
+				if (e.touches.length == 1) {
+					//设置触摸起始点水平方向位置
+					this.startX=e.touches[0].clientX;
+				}
+			},
+			/**
+			 * 触摸结束
+			 * @param {Object} e
+			 */
+			touchEnd: function (e) {
+				if (e.changedTouches.length == 1) {
+					//手指移动结束后水平位置
+					var endX = e.changedTouches[0].clientX;
+					let diff = endX-this.startX;
+					if(Math.abs(diff)>100){
+						if(diff>0){
+							// #ifdef APP-PLUS
+							uni.navigateTo({
+							    url: "/pages/user/user",
+							    animationType: 'fade-in',
+							    animationDuration: 300
+							})
+							// #endif
+						}
+					}
+				}
+			},
 		},
+		onLoad() {
+			this.getArticles(0)
+		},
+		onPullDownRefresh(){
+			this.getArticles(1)
+		}
     }
 </script>
 

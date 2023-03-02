@@ -21,7 +21,7 @@
 						</view>
 					</view>
 					<view style="margin-left: 140rpx;margin-top: 15rpx;"  @tap="gotoFeeds('/pages/my/set/set')">
-						<image style="width: 30px;height: 30px;" src="@/static/icon/setting.png"></image>
+						<image style="width: 30px;height: 30px;" src="@/static/user/set.png"></image>
 					</view>
 				</view>
 				<image src='@/static/user/userBackground.gif' mode='scaleToFill' class='gif-wave'></image>

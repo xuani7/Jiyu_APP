@@ -8,16 +8,15 @@
         </uni-card>
 		<u-popup :show="show" mode="center" border-radius="14" @close="changeTarget" width="auto" height="auto">
 			<u-card margin="30rpx" class="form">
-				<u-form :model="form">
-					<u-form-item label="日期">
-						<uni-datetime-picker type="date" v-model="form.targetDate"></uni-datetime-picker>
+				<u-form :model="targetInfo" @submit="onSubmit">
+					<u-form-item label="日期" name="date">
+						<uni-datetime-picker type="date" v-model="targetInfo.targetDate"></uni-datetime-picker>
 					</u-form-item>
-					<u-form-item label="目标">
-						<u-input v-model="form.targetInfo" type="textarea" border-color="#7ECEFD" auto-height />
+					<u-form-item label="目标" name="target">
+						<u-input v-model="targetInfo.targetText" type="textarea" border-color="#7ECEFD" auto-height />
 					</u-form-item>
-					<u-form-item>
-						<button type="primary" size="mini" @tap="submitForm">提交</button>
-					</u-form-item>
+					<button type="default" size="mini" form-type="reset"></button>
+					<button type="primary" size="mini" form-type="submit">提交</button>
 				</u-form>
 			</u-card>
 		</u-popup>
@@ -45,15 +44,20 @@
 				show:false,
 				showDate:false,
 				dateMode:'date',
-				form:{
-					targetInfo:'',
+				targetInfo:{
+					targetText:'',
 					targetDate:'2023-3-30'
 				}
             }
         },
         methods: {
-            submitForm(){
-				
+            onSubmit(e){
+				uniCloud.callFunction({
+					name:"setTargetInfo",
+					data:e
+				}).then(res => {
+					console.log(res);
+				})
 			},
 			
 			changeDateShow(){
@@ -95,12 +99,13 @@
 			changeTarget(){
 				this.show = !this.show
 				console.log("切换~"+this.show);
-			}
+			},
         },
         onLoad() {
             this.$nextTick(function() {
                 this.$refs.uCharts.getServerData()
-            });
+				this.$refs.target.getTargetInfo()
+            })
         }
     }
 </script>
