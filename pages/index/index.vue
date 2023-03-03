@@ -112,8 +112,8 @@
                     //手指移动结束后水平位置
                     var endX = e.changedTouches[0].clientX;
                     let diff = endX - this.startX;
-                    if (Math.abs(diff) > 120) {
-                        if (diff > 0) {
+                    if (Math.abs(diff) > 200) {
+                        if (diff > 200) {
                             // #ifdef APP-PLUS
                             uni.navigateTo({
                                 url: "/pages/user/user",

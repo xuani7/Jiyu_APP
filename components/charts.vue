@@ -32,7 +32,7 @@
                     padding: [15, 15, 0, 5],
                     fontSize: 13,
                     fontColor: "#666666",
-                    dataLabel: true,
+                    dataLabel: false,
                     dataPointShape: true,
                     dataPointShapeType: "solid",
                     touchMoveLimit: 60,
