@@ -67,6 +67,7 @@
                         shape="circle" @click="reset()"></u-button>
                 </view>
             </view>
+            <u-toast ref="uToast"></u-toast>
         </uni-card>
     </view>
 </template>
@@ -140,9 +141,29 @@
             this.init();
         },
         methods: {
+            
+            // 打卡
+            updateDot(){
+                uniCloud.callFunction({
+                    name:"updateDotList",
+                    data:this.dot_list
+                }).then(res => {
+                    if (res.result.updated) {
+                        this.showToast()
+                    }
+                })
+            },
+            
+            showToast() {
+                this.$refs.uToast.show({
+                    title:"操作成功",
+                    type:"success"
+                })
+            },
             //打卡
             mark() {
                 this.dot_list.push(this.date)
+                this.updateDot()
             },
             //回到今天
             reset() {
