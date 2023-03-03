@@ -8,7 +8,20 @@
     export default {
         data() {
             return {
-                chartData: {},
+                chartData: {
+                    categories: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+                    series: [{
+                            name: "目标",
+                            color: "#2185C5",
+                            data: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+                        },
+                        {
+                            name: "完成",
+                            color: "#7ECEFD",
+                            data: []
+                        }
+                    ]
+                },
                 //这里的 opts 是图表类型 type="column" 的全部配置参数，您可以将此配置复制到 config-ucharts.js 文件中下标为 ['column'] 的节点中来覆盖全局默认参数。实际应用过程中 opts 只需传入与全局默认参数中不一致的【某一个属性】即可实现同类型的图表显示不同的样式，达到页面简洁的需求。
                 opts: {
                     timing: "easeOut",
@@ -146,28 +159,26 @@
         },
         methods: {
             getServerData() {
-                //模拟从服务器获取数据时的延时
-                setTimeout(() => {
-                    //模拟服务器返回数据，如果数据格式和标准格式不同，需自行按下面的格式拼接
-                    let res = {
-                        categories: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-                        series: [{
-                                name: "目标",
-                                color: "#2185C5",
-                                data: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-                            },
-                            {
-                                name: "完成",
-                                color: "#7ECEFD",
-                                data: [18, 5, 21, 24, 6, 28, 14, 20, 18, 30, 8, 19]
-                            }
-                        ]
-                    };
-                    this.chartData = JSON.parse(JSON.stringify(res));
-                }, 500);
-            },
+                let dot_lists = []
+                let filterData = []
+                let DayData = []
+                
+                uniCloud.callFunction({
+                    name:'getDotList'
+                }).then(res => {
+                    dot_lists = res.result.data[0].dot_list
+                    // filterData = dot_lists.filter(item => new RegExp(('-'+ 2 +'-'),"i").test(item))
+                    for (var i = 1; i < 12; i++) {
+                        filterData = dot_lists.filter(item => new RegExp(('-'+ i +'-'),"i").test(item))
+                        DayData.push(filterData.length)
+                    }
+                    this.chartData.series[1].data = DayData
+                })
+                
+                this.chartData = JSON.parse(JSON.stringify(this.chartData))
+            }
         }
-    };
+    }
 </script>
 
 <style scoped>

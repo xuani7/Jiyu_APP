@@ -93,7 +93,7 @@ import { methods } from '../../uni_modules/uview-ui/libs/mixin/mixin'
 					//手指移动结束后水平位置
 					var endX = e.changedTouches[0].clientX;
 					let diff = endX-this.startX;
-					if(Math.abs(diff)>100){
+					if(Math.abs(diff)>120){
 						if(diff>0){
 							// #ifdef APP-PLUS
 							uni.navigateTo({
