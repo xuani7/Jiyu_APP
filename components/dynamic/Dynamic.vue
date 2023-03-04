@@ -1,56 +1,54 @@
 <template>
 	<uni-card shadow="true">
-		<view class="dynamic"  @click="clickDynamic()">
-		<view class="user__container">
-			<view class="user__header-warp">
-				<!-- 头像组 -->
-				<view class="user__header" @click.stop="clickUser()">
-					<image class="user__header-image" :src="avatar" mode="aspectFill"></image>
-				</view>
-			</view>
-			<view class="user__content">
-				<view class="user__content-main">
-					<text class="user__content-title uni-ellipsis" style="color: #282c35; font-weight: bold;" @click.stop="clickUser()">{{ name }}</text>
-					<text class="user__content-note uni-ellipsis">{{ timestampFormat(publishTime) }}</text>
-				</view>
-			</view>
-		</view>
-		
-		<u-line color="#7ECEFD"/>
-		<view class="text">{{content}}</view>
-		<view class="allImage">
-			<view class="imgList">
-				<view class="images" v-for="(item,index) in imgList" :key="item.id">
-					<image @click.stop="previewImg()" class="oneimg" :src="item" mode="aspectFill" :style="{width:imgWidth+'px','max-height':imgHeight+'px'}"></image>
-				</view>
-			</view>
-		</view>
-		<view class="operate" :style="'margin-top: 10px;width: 100%;display:'+operateDisplay" >
-			<uni-grid :column="3" :showBorder="false"  :square="false" >
-			    <uni-grid-item>
-			        <u-button shape="square" size="mini" hover-class="cell-hover" :hover-stay-time="50" color="#FFFFFF" @click.stop="clickThumbsup()">
-						<uni-icons type="hand-up-filled" size="18" :style="'margin-right: 2px;color:'+thumbsupColor"></uni-icons>
-						<text :style="'font-size: 14px; color:'+thumbsupColor">{{likeNumber?likeNumber:'点赞'}}</text>	
-					</u-button>
-			    </uni-grid-item>
-			    <uni-grid-item >
-			        <u-button shape="square" size="mini" hover-class="cell-hover" :hover-stay-time="50" color="#FFFFFF"  @click.stop="clickGiveReward()">
-						<uni-icons type="star-filled" size="18" :style="'margin-right: 2px;color:'+heartColor"></uni-icons>
-						<text :style="'font-size: 14px; color:'+heartColor">{{giveRewardNumber?giveRewardNumber:'打赏'}}</text>
-					</u-button>
-			    </uni-grid-item>
-			    <uni-grid-item >
-					<u-button shape="square" size="mini" hover-class="cell-hover" :hover-stay-time="50" color="#FFFFFF" @click.stop="clickChat()">
-						<uni-icons type="redo-filled" size="18" style="margin-right: 2px;color:gray"></uni-icons>
-						<text style="color: gray; font-size: 14px;" >{{'转发'}}</text>
-					</u-button>
-			    </uni-grid-item>
-			</uni-grid>
-		</view>
-	</view>
-		
+		<view class="dynamic">
+            <view class="user__container">
+                <view class="user__header-warp">
+                    <!-- 头像组 -->
+                    <view class="user__header">
+                        <image class="user__header-image" :src="avatar" mode="aspectFill"></image>
+                    </view>
+                </view>
+                <view class="user__content">
+                    <view class="user__content-main">
+                        <text class="user__content-title uni-ellipsis" style="color: #282c35; font-weight: bold;">{{ name }}</text>
+                        <text class="user__content-note uni-ellipsis">{{ timestampFormat(publishTime) }}</text>
+                    </view>
+                </view>
+            </view>
+            
+            <u-line color="#7ECEFD"/>
+            <view class="text">{{content}}</view>
+            <view class="allImage">
+                <view class="imgList">
+                    <view class="images" v-for="(item,index) in imgList" :key="index">
+                        <image @click.stop="previewImg(index)" class="oneimg" :src="item" mode="aspectFill" :style="{width:imgWidth+'px','max-height':imgHeight+'px'}"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="operate" :style="'margin-top: 10px;width: 100%;display:'+operateDisplay" >
+                <uni-grid :column="3" :showBorder="false"  :square="false" >
+                    <uni-grid-item>
+                        <u-button shape="square" size="mini" hover-class="cell-hover" :hover-stay-time="50" color="#FFFFFF" @click="clickThumbsup()">
+                            <uni-icons type="hand-up-filled" size="18" :style="'margin-right: 2px;color:'+thumbsupColor"></uni-icons>
+                            <text :style="'font-size: 14px; color:'+thumbsupColor">{{likeNumber_1?likeNumber_1:'点赞'}}</text>	
+                        </u-button>
+                    </uni-grid-item>
+                    <uni-grid-item >
+                        <u-button shape="square" size="mini" hover-class="cell-hover" :hover-stay-time="50" color="#FFFFFF"  @click="clickCollect()">
+                            <uni-icons type="star-filled" size="18" :style="'margin-right: 2px;color:'+heartColor"></uni-icons>
+                            <text :style="'font-size: 14px; color:'+heartColor">{{collectNumber_1?collectNumber_1:'收藏'}}</text>
+                        </u-button>
+                    </uni-grid-item>
+                    <uni-grid-item >
+                        <u-button shape="square" size="mini" hover-class="cell-hover" :hover-stay-time="50" color="#FFFFFF" @click="clickShare()">
+                            <uni-icons type="redo-filled" size="18" style="margin-right: 2px;color:gray"></uni-icons>
+                            <text style="color: gray; font-size: 14px;" >{{'转发'}}</text>
+                        </u-button>
+                    </uni-grid-item>
+                </uni-grid>
+            </view>
+        </view>
 	</uni-card>
-	
 </template>
 
 <script>
@@ -65,6 +63,7 @@
 			publishTime: {
 				type: Number
 			},
+            
 			isFocusOn: {
 				type: Boolean
 			},
@@ -77,18 +76,18 @@
 			isLike: {
 				type: Boolean
 			},
-			isGiveReward: {
+			isCollect: {
 				type: Boolean
 			},
 			likeNumber: {
 				type: Number
 			},
-			giveRewardNumber: {
+			collectNumber: {
 				type: Number
 			},
-			chatNumber: {
-				type: Number
-			},
+            chatNumber:{
+                type: Number
+            },
 			userNoShow: {
 				type: Boolean
 			},
@@ -98,6 +97,10 @@
 		},
 		data() {
 			return {
+                likeNumber_1 : this.likeNumber,
+                isLike_1 : this.isLike,
+                collectNumber_1 : this.collectNumber,
+                isCollect_1 : this.isCollect,
 				windowWidth:0,	//屏幕可用宽度
 				windowHeight:0,	//屏幕可用高度
 				imgWidth: 0,	//图片宽度
@@ -119,24 +122,23 @@
 			if(this.operateNoShow){
 				this.operateDisplay = 'none';
 			}
-			
 			this.judgeImg();
 			this.initOperate();
 		},
 		methods: {
 			// 预览图片
-			previewImg() {
+			previewImg(index) {
 				uni.previewImage({
 					urls: this.imgList,
+                    current:index,
 					longPressActions: {
 						itemList: ['保存图片'],
-
 					}
 				})
 			},
 			initOperate(){
 				if(this.isLike) this.thumbsupColor = '#7ECEFD';
-				if(this.isGiveReward) this.heartColor = '#7ECEFD';
+				if(this.isCollect) this.heartColor = '#7ECEFD';
 			},
 			// 自适应判断
 			judgeImg() {
@@ -185,29 +187,35 @@
 			},
 			
 			/** 触发父级事件 */
-			// 点击动态
-			clickDynamic(){
-				this.$emit('clickDynamic');
-			},
-			// 点击用户信息
-			clickUser(){
-				this.$emit('clickUser');
-			},
-			// 点击关注
-			clickFocus(){
-				this.$emit('clickFocus');
-			},
 			// 点赞
 			clickThumbsup(){
+                if(this.isLike_1){
+                    this.isLike_1 = false
+                    this.likeNumber_1 -= 1
+                    this.thumbsupColor = '#808080'
+                }else{
+                    this.isLike_1 = true
+                    this.likeNumber_1 += 1
+                    this.thumbsupColor = '#7ECEFD'
+                }
 				this.$emit('clickThumbsup');
 			},
-			// 点击打赏
-			clickGiveReward(){
-				this.$emit('clickGiveReward');
+			// 收藏
+			clickCollect(){
+                if(this.isCollect_1){
+                    this.isCollect_1 = false
+                    this.collectNumber_1 -= 1
+                    this.heartColor = '#808080'
+                }else{
+                    this.iCollect_1 = true
+                    this.collectNumber_1 += 1
+                    this.heartColor = '#7ECEFD'
+                }
+				this.$emit('clickCollect');
 			},
-			// 点击聊天
-			clickChat(){
-				this.$emit('clickChat');
+			// 转发
+			clickShare(){
+				this.$emit('clickShare');
 			}
 		}
 	}

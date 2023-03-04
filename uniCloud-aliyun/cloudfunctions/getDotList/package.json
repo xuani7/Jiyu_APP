@@ -1,0 +1,7 @@
+{
+  "name": "getDotLists",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

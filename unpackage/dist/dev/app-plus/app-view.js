@@ -22554,19 +22554,13 @@ var render = function () {
             clickDynamic: function ($event) {
               return _vm.$handleViewEvent($event)
             },
-            clickUser: function ($event) {
-              return _vm.$handleViewEvent($event)
-            },
-            clickFocus: function ($event) {
-              return _vm.$handleViewEvent($event)
-            },
             clickThumbsup: function ($event) {
               return _vm.$handleViewEvent($event)
             },
-            clickGiveReward: function ($event) {
+            clickCollect: function ($event) {
               return _vm.$handleViewEvent($event)
             },
-            clickChat: function ($event) {
+            clickShare: function ($event) {
               return _vm.$handleViewEvent($event)
             },
           },
@@ -23035,15 +23029,7 @@ var render = function () {
     [
       _c(
         "uni-view",
-        {
-          staticClass: _vm._$g(1, "sc"),
-          attrs: { _i: 1 },
-          on: {
-            click: function ($event) {
-              return _vm.$handleViewEvent($event)
-            },
-          },
-        },
+        { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } },
         [
           _c(
             "uni-view",
@@ -23055,15 +23041,7 @@ var render = function () {
                 [
                   _c(
                     "uni-view",
-                    {
-                      staticClass: _vm._$g(4, "sc"),
-                      attrs: { _i: 4 },
-                      on: {
-                        click: function ($event) {
-                          return _vm.$handleViewEvent($event, { stop: true })
-                        },
-                      },
-                    },
+                    { staticClass: _vm._$g(4, "sc"), attrs: { _i: 4 } },
                     [
                       _c("v-uni-image", {
                         staticClass: _vm._$g(5, "sc"),
@@ -23096,13 +23074,6 @@ var render = function () {
                             "font-weight": "bold",
                           },
                           attrs: { _i: 8 },
-                          on: {
-                            click: function ($event) {
-                              return _vm.$handleViewEvent($event, {
-                                stop: true,
-                              })
-                            },
-                          },
                         },
                         [_vm._v(_vm._$g(8, "t0-0"))]
                       ),
@@ -23187,9 +23158,7 @@ var render = function () {
                           attrs: { _i: 19 },
                           on: {
                             click: function ($event) {
-                              return _vm.$handleViewEvent($event, {
-                                stop: true,
-                              })
+                              return _vm.$handleViewEvent($event)
                             },
                           },
                         },
@@ -23219,9 +23188,7 @@ var render = function () {
                           attrs: { _i: 23 },
                           on: {
                             click: function ($event) {
-                              return _vm.$handleViewEvent($event, {
-                                stop: true,
-                              })
+                              return _vm.$handleViewEvent($event)
                             },
                           },
                         },
@@ -23251,9 +23218,7 @@ var render = function () {
                           attrs: { _i: 27 },
                           on: {
                             click: function ($event) {
-                              return _vm.$handleViewEvent($event, {
-                                stop: true,
-                              })
+                              return _vm.$handleViewEvent($event)
                             },
                           },
                         },
@@ -23744,7 +23709,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _default = {
-  props: ["avatar", "name", "publishTime", "isFocusOn", "content", "imgList", "isLike", "isGiveReward", "likeNumber", "giveRewardNumber", "chatNumber", "userNoShow", "operateNoShow"],
+  props: ["avatar", "name", "publishTime", "isFocusOn", "content", "imgList", "isLike", "isCollect", "likeNumber", "collectNumber", "chatNumber", "userNoShow", "operateNoShow"],
   data: function data() {
     return {
       wxsProps: {}
@@ -23802,7 +23767,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 13);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 想法图片排列样式 */\n.uni-list-chat__content-extra-text[data-v-307deb38]{\n\tcolor: #007AFF;\n}\n.dynamic[data-v-307deb38]{\n\twidth: 100%;\n}\n.allImage[data-v-307deb38] {\n\tdisplay: flex;\n\tmargin-top: 10rpx;\n\tflex-wrap: wrap;\n\tjustify-content: flex-start;\n}\n.imgList[data-v-307deb38]{\n\tmargin: 0 3%;\n}\n.images[data-v-307deb38]:not(:nth-child(3n)) {\n\t/* margin-right: 10rpx; */\n}\n.text[data-v-307deb38]{\n\tmargin: 1% 3% 2%;\n}\n.images[data-v-307deb38] {\n\tmargin-right: 10rpx;\n\tdisplay: inline-block;\n}\n.operate[data-v-307deb38]{\n\twidth: 94%;\n\tpadding: 3%;\n\tfont-size: 14px;\n}\n.chat-custom-right[data-v-307deb38] {\n    flex: 1;\n\n    display: flex;\n\n    flex-direction: column;\n    justify-content: space-between;\n    align-items: flex-end;\n}\n.chat-custom-text[data-v-307deb38] {\n    font-size: 12px;\n    color: #999;\n}\n.bottom-line[data-v-307deb38]{\n\tborder-bottom: 10px solid #efefef;\n}\n.user__container[data-v-307deb38]{\n\tdisplay: flex;\n\t/* -webkit-flex-direction: row; */\n\tflex-direction: row;\n\t/* -webkit-flex: 1; */\n\tflex: 1;\n\tpadding: 10px 15px;\n\tposition: relative;\n\toverflow: hidden;\n}\n.user__header[data-v-307deb38]{\n\tdisplay: flex;\n\twidth: 45px;\n\theight: 45px;\n\t-webkit-border-radius: 5px;\n\tborder-color: #eee;\n\tborder-width: 1px;\n\tborder-style: solid;\n\toverflow: hidden;\n\tborder-radius: 50px;\n}\n.user__header-image[data-v-307deb38]{\n\tdisplay: flex;\n\talign-content: center;\n\tflex-direction: row;\n\tjustify-content: center;\n\talign-items: center;\n\tflex-wrap: wrap-reverse;\n\twidth: 45px;\n\theight: 45px;\n\tborder-radius: 5px;\n\tborder-color: #eee;\n\tborder-width: 1px;\n\tborder-style: solid;\n\toverflow: hidden;\n}\n.user__content[data-v-307deb38]{\n\tdisplay: flex;\n\tflex-direction: row;\n\tflex: 1;\n\toverflow: hidden;\n\tpadding: 2px 0;\n}\n.user__content-main[data-v-307deb38]{\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: space-between;\n\tpadding-left: 10px;\n\tflex: 1;\n\toverflow: hidden;\n}\n.user__content-note[data-v-307deb38]{\n\tmargin-top: 3px;\n\tcolor: #999;\n\tfont-size: 12px;\n\tfont-weight: normal;\n\toverflow: hidden;\n}\n.user__focus-on[data-v-307deb38]{\n\tpadding: 3px 10px;\n\tborder: 1px solid #fb5f5f;\n\tcolor: #fb5f5f;\n\tdisplay: flex;\n\tfont-size: 14px;\n\tborder-radius: 3px;\n}\n.user__focus-off[data-v-307deb38]{\n\tpadding: 3px;\n\tcolor: gray;\n\tfont-size: 14px;\n}\n.cell-hover[data-v-307deb38]{\n\tbackground:#fafafa;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 想法图片排列样式 */\n.uni-list-chat__content-extra-text[data-v-307deb38]{\n\tcolor: #007AFF;\n}\n.dynamic[data-v-307deb38]{\n\twidth: 100%;\n}\n.allImage[data-v-307deb38] {\n\tdisplay: flex;\n\tmargin-top: 10rpx;\n\tflex-wrap: wrap;\n\tjustify-content: flex-start;\n}\n.imgList[data-v-307deb38]{\n\tmargin: 0 3%;\n}\n.images[data-v-307deb38]:not(:nth-child(3n)) {\n\t/* margin-right: 10rpx; */\n}\n.text[data-v-307deb38]{\n\tmargin: 1% 3% 2%;\n}\n.images[data-v-307deb38] {\n\tmargin-right: 10rpx;\n\tdisplay: inline-block;\n}\n.operate[data-v-307deb38]{\n\twidth: 94%;\n\tpadding: 3%;\n\tfont-size: 14px;\n}\n.chat-custom-right[data-v-307deb38] {\n    flex: 1;\n\n    display: flex;\n\n    flex-direction: column;\n    justify-content: space-between;\n    align-items: flex-end;\n}\n.chat-custom-text[data-v-307deb38] {\n    font-size: 12px;\n    color: #999;\n}\n.bottom-line[data-v-307deb38]{\n\tborder-bottom: 10px solid #efefef;\n}\n.user__container[data-v-307deb38]{\n\tdisplay: flex;\n\t/* -webkit-flex-direction: row; */\n\tflex-direction: row;\n\t/* -webkit-flex: 1; */\n\tflex: 1;\n\tpadding: 10px 15px;\n\tposition: relative;\n\toverflow: hidden;\n}\n.user__header[data-v-307deb38]{\n\tdisplay: flex;\n\twidth: 45px;\n\theight: 45px;\n\t-webkit-border-radius: 5px;\n\tborder-color: #eee;\n\tborder-width: 1px;\n\tborder-style: solid;\n\toverflow: hidden;\n\tborder-radius: 50px;\n}\n.user__header-image[data-v-307deb38]{\n\tdisplay: flex;\n\talign-content: center;\n\tflex-direction: row;\n\tjustify-content: center;\n\talign-items: center;\n\tflex-wrap: wrap-reverse;\n\twidth: 45px;\n\theight: 45px;\n\tborder-radius: 5px;\n\tborder-color: #eee;\n\tborder-width: 1px;\n\tborder-style: solid;\n\toverflow: hidden;\n}\n.user__content[data-v-307deb38]{\n\tdisplay: flex;\n\tflex-direction: row;\n\tflex: 1;\n\toverflow: hidden;\n\tpadding: 2px 0;\n}\n.user__content-main[data-v-307deb38]{\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: space-between;\n\tpadding-left: 10px;\n\tflex: 1;\n\toverflow: hidden;\n}\n.user__content-note[data-v-307deb38]{\n\tmargin-top: 3px;\n\tcolor: #999;\n\tfont-size: 12px;\n\tfont-weight: normal;\n\toverflow: hidden;\n}\n.user__focus-on[data-v-307deb38]{\n\tpadding: 3px 10px;\n\tborder: 1px solid #fb5f5f;\n\tcolor: #fb5f5f;\n\tdisplay: flex;\n\tfont-size: 14px;\n\tborder-radius: 3px;\n}\n.user__focus-off[data-v-307deb38]{\n\tpadding: 3px;\n\tcolor: gray;\n\tfont-size: 14px;\n}\n.cell-hover[data-v-307deb38]{\n\tbackground:#fafafa;\n}\n\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -23965,37 +23930,15 @@ var render = function () {
                     ],
                     1
                   ),
-                  _c(
-                    "uni-view",
-                    {
-                      staticStyle: {
-                        "margin-left": "140rpx",
-                        "margin-top": "15rpx",
-                      },
-                      attrs: { _i: 11 },
-                      on: {
-                        click: function ($event) {
-                          return _vm.$handleViewEvent($event)
-                        },
-                      },
-                    },
-                    [
-                      _c("v-uni-image", {
-                        staticStyle: { width: "30px", height: "30px" },
-                        attrs: { src: "/static/user/set.png", _i: 12 },
-                      }),
-                    ],
-                    1
-                  ),
                 ],
                 1
               ),
               _c("v-uni-image", {
-                staticClass: _vm._$g(13, "sc"),
+                staticClass: _vm._$g(11, "sc"),
                 attrs: {
                   src: "/static/user/userBackground.gif",
                   mode: "scaleToFill",
-                  _i: 13,
+                  _i: 11,
                 },
               }),
             ],
@@ -24007,8 +23950,8 @@ var render = function () {
       _c(
         "uni-view",
         {
-          staticClass: _vm._$g(14, "sc"),
-          attrs: { "hover-class": "cell-hover", "hover-stay-time": 50, _i: 14 },
+          staticClass: _vm._$g(12, "sc"),
+          attrs: { "hover-class": "cell-hover", "hover-stay-time": 50, _i: 12 },
           on: {
             click: function ($event) {
               return _vm.$handleViewEvent($event)
@@ -24018,12 +23961,12 @@ var render = function () {
         [
           _c(
             "v-uni-text",
-            { staticClass: _vm._$g(15, "sc"), attrs: { _i: 15 } },
+            { staticClass: _vm._$g(13, "sc"), attrs: { _i: 13 } },
             [_vm._v("个人资料")]
           ),
-          _c("v-uni-text", {
-            staticClass: _vm._$g(16, "sc"),
-            attrs: { _i: 16 },
+          _c("v-uni-image", {
+            staticClass: _vm._$g(14, "sc"),
+            attrs: { src: _vm._$g(14, "a-src"), _i: 14 },
           }),
         ],
         1
@@ -24031,8 +23974,8 @@ var render = function () {
       _c(
         "uni-view",
         {
-          staticClass: _vm._$g(17, "sc"),
-          attrs: { "hover-class": "cell-hover", "hover-stay-time": 50, _i: 17 },
+          staticClass: _vm._$g(15, "sc"),
+          attrs: { "hover-class": "cell-hover", "hover-stay-time": 50, _i: 15 },
           on: {
             click: function ($event) {
               return _vm.$handleViewEvent($event)
@@ -24042,12 +23985,12 @@ var render = function () {
         [
           _c(
             "v-uni-text",
-            { staticClass: _vm._$g(18, "sc"), attrs: { _i: 18 } },
+            { staticClass: _vm._$g(16, "sc"), attrs: { _i: 16 } },
             [_vm._v("我的收藏")]
           ),
-          _c("v-uni-text", {
-            staticClass: _vm._$g(19, "sc"),
-            attrs: { _i: 19 },
+          _c("v-uni-image", {
+            staticClass: _vm._$g(17, "sc"),
+            attrs: { src: _vm._$g(17, "a-src"), _i: 17 },
           }),
         ],
         1
@@ -24055,8 +23998,8 @@ var render = function () {
       _c(
         "uni-view",
         {
-          staticClass: _vm._$g(20, "sc"),
-          attrs: { "hover-class": "cell-hover", "hover-stay-time": 50, _i: 20 },
+          staticClass: _vm._$g(18, "sc"),
+          attrs: { "hover-class": "cell-hover", "hover-stay-time": 50, _i: 18 },
           on: {
             click: function ($event) {
               return _vm.$handleViewEvent($event)
@@ -24066,51 +24009,27 @@ var render = function () {
         [
           _c(
             "v-uni-text",
-            { staticClass: _vm._$g(21, "sc"), attrs: { _i: 21 } },
-            [_vm._v("我的关注")]
+            { staticClass: _vm._$g(19, "sc"), attrs: { _i: 19 } },
+            [_vm._v("切换用户")]
           ),
-          _c("v-uni-text", {
-            staticClass: _vm._$g(22, "sc"),
-            attrs: { _i: 22 },
+          _c("v-uni-image", {
+            staticClass: _vm._$g(20, "sc"),
+            attrs: { src: _vm._$g(20, "a-src"), _i: 20 },
           }),
         ],
         1
       ),
       _c(
         "uni-view",
-        {
-          staticClass: _vm._$g(23, "sc"),
-          attrs: { "hover-class": "cell-hover", "hover-stay-time": 50, _i: 23 },
-          on: {
-            click: function ($event) {
-              return _vm.$handleViewEvent($event)
-            },
-          },
-        },
+        { staticClass: _vm._$g(21, "sc"), attrs: { _i: 21 } },
         [
           _c(
             "v-uni-text",
-            { staticClass: _vm._$g(24, "sc"), attrs: { _i: 24 } },
-            [_vm._v("反馈帮助")]
-          ),
-          _c("v-uni-text", {
-            staticClass: _vm._$g(25, "sc"),
-            attrs: { _i: 25 },
-          }),
-        ],
-        1
-      ),
-      _c(
-        "uni-view",
-        { staticClass: _vm._$g(26, "sc"), attrs: { _i: 26 } },
-        [
-          _c(
-            "v-uni-text",
-            { staticClass: _vm._$g(27, "sc"), attrs: { _i: 27 } },
+            { staticClass: _vm._$g(22, "sc"), attrs: { _i: 22 } },
             [_vm._v("消息推送")]
           ),
           _c("v-uni-switch", {
-            attrs: { checked: true, color: "#7ECEFD", _i: 28 },
+            attrs: { checked: true, color: "#7ECEFD", _i: 23 },
             on: {
               change: function ($event) {
                 return _vm.$handleViewEvent($event)
@@ -24123,8 +24042,8 @@ var render = function () {
       _c(
         "uni-view",
         {
-          staticClass: _vm._$g(29, "sc"),
-          attrs: { "hover-class": "cell-hover", "hover-stay-time": 50, _i: 29 },
+          staticClass: _vm._$g(24, "sc"),
+          attrs: { "hover-class": "cell-hover", "hover-stay-time": 50, _i: 24 },
           on: {
             click: function ($event) {
               return _vm.$handleViewEvent($event)
@@ -24134,12 +24053,12 @@ var render = function () {
         [
           _c(
             "v-uni-text",
-            { staticClass: _vm._$g(30, "sc"), attrs: { _i: 30 } },
-            [_vm._v("关于我们")]
+            { staticClass: _vm._$g(25, "sc"), attrs: { _i: 25 } },
+            [_vm._v("反馈帮助")]
           ),
-          _c("v-uni-text", {
-            staticClass: _vm._$g(31, "sc"),
-            attrs: { _i: 31 },
+          _c("v-uni-image", {
+            staticClass: _vm._$g(26, "sc"),
+            attrs: { src: _vm._$g(26, "a-src"), _i: 26 },
           }),
         ],
         1
@@ -24147,8 +24066,8 @@ var render = function () {
       _c(
         "uni-view",
         {
-          staticClass: _vm._$g(32, "sc"),
-          attrs: { _i: 32 },
+          staticClass: _vm._$g(27, "sc"),
+          attrs: { "hover-class": "cell-hover", "hover-stay-time": 50, _i: 27 },
           on: {
             click: function ($event) {
               return _vm.$handleViewEvent($event)
@@ -24158,18 +24077,62 @@ var render = function () {
         [
           _c(
             "v-uni-text",
-            { staticClass: _vm._$g(33, "sc"), attrs: { _i: 33 } },
+            { staticClass: _vm._$g(28, "sc"), attrs: { _i: 28 } },
+            [_vm._v("用户协议")]
+          ),
+          _c("v-uni-image", {
+            staticClass: _vm._$g(29, "sc"),
+            attrs: { src: _vm._$g(29, "a-src"), _i: 29 },
+          }),
+        ],
+        1
+      ),
+      _c(
+        "uni-view",
+        {
+          staticClass: _vm._$g(30, "sc"),
+          attrs: { "hover-class": "cell-hover", "hover-stay-time": 50, _i: 30 },
+          on: {
+            click: function ($event) {
+              return _vm.$handleViewEvent($event)
+            },
+          },
+        },
+        [
+          _c(
+            "v-uni-text",
+            { staticClass: _vm._$g(31, "sc"), attrs: { _i: 31 } },
+            [_vm._v("关于我们")]
+          ),
+          _c("v-uni-image", {
+            staticClass: _vm._$g(32, "sc"),
+            attrs: { src: _vm._$g(32, "a-src"), _i: 32 },
+          }),
+        ],
+        1
+      ),
+      _c(
+        "uni-view",
+        {
+          staticClass: _vm._$g(33, "sc"),
+          attrs: { _i: 33 },
+          on: {
+            click: function ($event) {
+              return _vm.$handleViewEvent($event)
+            },
+          },
+        },
+        [
+          _c(
+            "v-uni-text",
+            { staticClass: _vm._$g(34, "sc"), attrs: { _i: 34 } },
             [_vm._v("检查更新")]
           ),
           _c(
             "v-uni-text",
-            { staticClass: _vm._$g(34, "sc"), attrs: { _i: 34 } },
+            { staticClass: _vm._$g(35, "sc"), attrs: { _i: 35 } },
             [_vm._v("当前版本 1.0.3")]
           ),
-          _c("v-uni-text", {
-            staticClass: _vm._$g(35, "sc"),
-            attrs: { _i: 35 },
-          }),
         ],
         1
       ),
@@ -24295,7 +24258,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 13);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\n/* 水平间距 */\n/* 水平间距 */\n.u-line-1 {\n  display: -webkit-box !important;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  word-break: break-all;\n  -webkit-line-clamp: 1;\n  -webkit-box-orient: vertical !important;\n}\n.u-line-2 {\n  display: -webkit-box !important;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  word-break: break-all;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical !important;\n}\n.u-line-3 {\n  display: -webkit-box !important;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  word-break: break-all;\n  -webkit-line-clamp: 3;\n  -webkit-box-orient: vertical !important;\n}\n.u-line-4 {\n  display: -webkit-box !important;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  word-break: break-all;\n  -webkit-line-clamp: 4;\n  -webkit-box-orient: vertical !important;\n}\n.u-line-5 {\n  display: -webkit-box !important;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  word-break: break-all;\n  -webkit-line-clamp: 5;\n  -webkit-box-orient: vertical !important;\n}\n.u-border {\n  border-width: 0.5px !important;\n  border-color: #dadbde !important;\n  border-style: solid;\n}\n.u-border-top {\n  border-top-width: 0.5px !important;\n  border-color: #dadbde !important;\n  border-top-style: solid;\n}\n.u-border-left {\n  border-left-width: 0.5px !important;\n  border-color: #dadbde !important;\n  border-left-style: solid;\n}\n.u-border-right {\n  border-right-width: 0.5px !important;\n  border-color: #dadbde !important;\n  border-right-style: solid;\n}\n.u-border-bottom {\n  border-bottom-width: 0.5px !important;\n  border-color: #dadbde !important;\n  border-bottom-style: solid;\n}\n.u-border-top-bottom {\n  border-top-width: 0.5px !important;\n  border-bottom-width: 0.5px !important;\n  border-color: #dadbde !important;\n  border-top-style: solid;\n  border-bottom-style: solid;\n}\n.u-reset-button {\n  padding: 0;\n  background-color: transparent;\n}\n.u-reset-button::after {\n  border: none;\n}\n.u-hover-class {\n  opacity: 0.7;\n}\n.u-primary-light {\n  color: #ecf5ff;\n}\n.u-warning-light {\n  color: #fdf6ec;\n}\n.u-success-light {\n  color: #f5fff0;\n}\n.u-error-light {\n  color: #fef0f0;\n}\n.u-info-light {\n  color: #f4f4f5;\n}\n.u-primary-light-bg {\n  background-color: #ecf5ff;\n}\n.u-warning-light-bg {\n  background-color: #fdf6ec;\n}\n.u-success-light-bg {\n  background-color: #f5fff0;\n}\n.u-error-light-bg {\n  background-color: #fef0f0;\n}\n.u-info-light-bg {\n  background-color: #f4f4f5;\n}\n.u-primary-dark {\n  color: #398ade;\n}\n.u-warning-dark {\n  color: #f1a532;\n}\n.u-success-dark {\n  color: #53c21d;\n}\n.u-error-dark {\n  color: #e45656;\n}\n.u-info-dark {\n  color: #767a82;\n}\n.u-primary-dark-bg {\n  background-color: #398ade;\n}\n.u-warning-dark-bg {\n  background-color: #f1a532;\n}\n.u-success-dark-bg {\n  background-color: #53c21d;\n}\n.u-error-dark-bg {\n  background-color: #e45656;\n}\n.u-info-dark-bg {\n  background-color: #767a82;\n}\n.u-primary-disabled {\n  color: #9acafc;\n}\n.u-warning-disabled {\n  color: #f9d39b;\n}\n.u-success-disabled {\n  color: #a9e08f;\n}\n.u-error-disabled {\n  color: #f7b2b2;\n}\n.u-info-disabled {\n  color: #c4c6c9;\n}\n.u-primary {\n  color: #3c9cff;\n}\n.u-warning {\n  color: #f9ae3d;\n}\n.u-success {\n  color: #5ac725;\n}\n.u-error {\n  color: #f56c6c;\n}\n.u-info {\n  color: #909399;\n}\n.u-primary-bg {\n  background-color: #3c9cff;\n}\n.u-warning-bg {\n  background-color: #f9ae3d;\n}\n.u-success-bg {\n  background-color: #5ac725;\n}\n.u-error-bg {\n  background-color: #f56c6c;\n}\n.u-info-bg {\n  background-color: #909399;\n}\n.u-main-color {\n  color: #303133;\n}\n.u-content-color {\n  color: #606266;\n}\n.u-tips-color {\n  color: #909193;\n}\n.u-light-color {\n  color: #c0c4cc;\n}\n.u-safe-area-inset-top {\n  padding-top: 0;\n  padding-top: constant(safe-area-inset-top);\n  padding-top: env(safe-area-inset-top);\n}\n.u-safe-area-inset-right {\n  padding-right: 0;\n  padding-right: constant(safe-area-inset-right);\n  padding-right: env(safe-area-inset-right);\n}\n.u-safe-area-inset-bottom {\n  padding-bottom: 0;\n  padding-bottom: constant(safe-area-inset-bottom);\n  padding-bottom: env(safe-area-inset-bottom);\n}\n.u-safe-area-inset-left {\n  padding-left: 0;\n  padding-left: constant(safe-area-inset-left);\n  padding-left: env(safe-area-inset-left);\n}\n::-webkit-scrollbar {\n  display: none;\n  width: 0 !important;\n  height: 0 !important;\n  -webkit-appearance: none;\n  background: transparent;\n}\n/* 颜色变量 */\n/*文字颜色*/\n/* 边框颜色 */\n/* 图片加载中颜色 */\n/* 行为相关颜色 */\n/* 文字基本颜色 */\n/* 背景颜色 */\n/* 文字尺寸 */\n/* 图片尺寸 */\n/* Border Radius */\n/* 水平间距 */\n/* 垂直间距 */\n/* 透明度 */\n/* 文章场景相关 */\n/* 页面左右间距 */\n/* 文字尺寸 */\nbody {\n  background: #f8f8f8;\n}\n.container {\n  margin-top: 60px;\n}\n.avatar {\n  text-align: center;\n  margin: 0 auto;\n}\n.list-cell {\n  display: flex;\n  align-items: baseline;\n  padding: 20upx 30upx;\n  line-height: 60upx;\n  position: relative;\n  background: #fff;\n  justify-content: center;\n}\n.list-cell.log-out-btn {\n  margin-top: 40upx;\n}\n.list-cell.log-out-btn .cell-tit {\n  color: #007aff;\n  text-align: center;\n  margin-right: 0;\n}\n.list-cell.cell-hover {\n  background: #fafafa;\n}\n.list-cell.b-b:after {\n  left: 30upx;\n}\n.list-cell.m-t {\n  margin-top: 16upx;\n}\n.list-cell .cell-more {\n  align-self: baseline;\n  font-size: 32upx;\n  color: #909399;\n  margin-left: 10upx;\n}\n.list-cell .cell-tit {\n  flex: 1;\n  font-size: 30upx;\n  color: #303133;\n  margin-right: 10upx;\n}\n.list-cell .cell-tip {\n  font-size: 28upx;\n  color: #909399;\n}\n.list-cell uni-switch {\n  -webkit-transform: translateX(16upx) scale(0.84);\n          transform: translateX(16upx) scale(0.84);\n}\n.top {\n  width: 100%;\n  height: 130px;\n  background: #7ECEFD;\n  padding-top: 15px;\n  position: relative;\n}\n.center {\n  width: 95%;\n  height: 100px;\n  background: white;\n  display: flex;\n  flex-direction: column;\n  margin: 0 auto;\n  border-radius: 5px;\n}\n.center_top {\n  display: flex;\n  flex-direction: row;\n  width: 80%;\n  height: 80px;\n  margin: 0 auto;\n  margin-top: 20rpx;\n  border-bottom: 1px solid #EEEEEE;\n}\n.center_img {\n  width: 66px;\n  height: 66px;\n  border-radius: 50%;\n  overflow: hidden;\n}\n.center_img uni-image {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n}\n.center_img .user_head {\n  width: 100%;\n  height: 100%;\n}\n.center_info {\n  display: flex;\n  flex-direction: column;\n  margin-top: 20rpx;\n  margin-left: 30px;\n}\n.center_name {\n  font-size: 20px;\n}\n.center_phone {\n  color: #BEBEBE;\n}\n.center_rank {\n  width: 50%;\n  height: 35px;\n  display: flex;\n  flex-direction: row;\n}\n.rank_text {\n  height: 35px;\n  line-height: 35px;\n  margin-left: 10rpx;\n  color: #AAAAAA;\n}\n.center_rank uni-image {\n  width: 35px;\n  height: 35px;\n}\n.center_score {\n  width: 50%;\n  height: 35px;\n  display: flex;\n  flex-direction: row;\n}\n.center_score uni-image {\n  width: 35px;\n  height: 35px;\n}\n.gif-wave {\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0;\n  z-index: 99;\n  mix-blend-mode: screen;\n  height: 100rpx;\n}\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/* 水平间距 */\n/* 水平间距 */\n.u-line-1 {\n  display: -webkit-box !important;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  word-break: break-all;\n  -webkit-line-clamp: 1;\n  -webkit-box-orient: vertical !important;\n}\n.u-line-2 {\n  display: -webkit-box !important;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  word-break: break-all;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical !important;\n}\n.u-line-3 {\n  display: -webkit-box !important;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  word-break: break-all;\n  -webkit-line-clamp: 3;\n  -webkit-box-orient: vertical !important;\n}\n.u-line-4 {\n  display: -webkit-box !important;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  word-break: break-all;\n  -webkit-line-clamp: 4;\n  -webkit-box-orient: vertical !important;\n}\n.u-line-5 {\n  display: -webkit-box !important;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  word-break: break-all;\n  -webkit-line-clamp: 5;\n  -webkit-box-orient: vertical !important;\n}\n.u-border {\n  border-width: 0.5px !important;\n  border-color: #dadbde !important;\n  border-style: solid;\n}\n.u-border-top {\n  border-top-width: 0.5px !important;\n  border-color: #dadbde !important;\n  border-top-style: solid;\n}\n.u-border-left {\n  border-left-width: 0.5px !important;\n  border-color: #dadbde !important;\n  border-left-style: solid;\n}\n.u-border-right {\n  border-right-width: 0.5px !important;\n  border-color: #dadbde !important;\n  border-right-style: solid;\n}\n.u-border-bottom {\n  border-bottom-width: 0.5px !important;\n  border-color: #dadbde !important;\n  border-bottom-style: solid;\n}\n.u-border-top-bottom {\n  border-top-width: 0.5px !important;\n  border-bottom-width: 0.5px !important;\n  border-color: #dadbde !important;\n  border-top-style: solid;\n  border-bottom-style: solid;\n}\n.u-reset-button {\n  padding: 0;\n  background-color: transparent;\n}\n.u-reset-button::after {\n  border: none;\n}\n.u-hover-class {\n  opacity: 0.7;\n}\n.u-primary-light {\n  color: #ecf5ff;\n}\n.u-warning-light {\n  color: #fdf6ec;\n}\n.u-success-light {\n  color: #f5fff0;\n}\n.u-error-light {\n  color: #fef0f0;\n}\n.u-info-light {\n  color: #f4f4f5;\n}\n.u-primary-light-bg {\n  background-color: #ecf5ff;\n}\n.u-warning-light-bg {\n  background-color: #fdf6ec;\n}\n.u-success-light-bg {\n  background-color: #f5fff0;\n}\n.u-error-light-bg {\n  background-color: #fef0f0;\n}\n.u-info-light-bg {\n  background-color: #f4f4f5;\n}\n.u-primary-dark {\n  color: #398ade;\n}\n.u-warning-dark {\n  color: #f1a532;\n}\n.u-success-dark {\n  color: #53c21d;\n}\n.u-error-dark {\n  color: #e45656;\n}\n.u-info-dark {\n  color: #767a82;\n}\n.u-primary-dark-bg {\n  background-color: #398ade;\n}\n.u-warning-dark-bg {\n  background-color: #f1a532;\n}\n.u-success-dark-bg {\n  background-color: #53c21d;\n}\n.u-error-dark-bg {\n  background-color: #e45656;\n}\n.u-info-dark-bg {\n  background-color: #767a82;\n}\n.u-primary-disabled {\n  color: #9acafc;\n}\n.u-warning-disabled {\n  color: #f9d39b;\n}\n.u-success-disabled {\n  color: #a9e08f;\n}\n.u-error-disabled {\n  color: #f7b2b2;\n}\n.u-info-disabled {\n  color: #c4c6c9;\n}\n.u-primary {\n  color: #3c9cff;\n}\n.u-warning {\n  color: #f9ae3d;\n}\n.u-success {\n  color: #5ac725;\n}\n.u-error {\n  color: #f56c6c;\n}\n.u-info {\n  color: #909399;\n}\n.u-primary-bg {\n  background-color: #3c9cff;\n}\n.u-warning-bg {\n  background-color: #f9ae3d;\n}\n.u-success-bg {\n  background-color: #5ac725;\n}\n.u-error-bg {\n  background-color: #f56c6c;\n}\n.u-info-bg {\n  background-color: #909399;\n}\n.u-main-color {\n  color: #303133;\n}\n.u-content-color {\n  color: #606266;\n}\n.u-tips-color {\n  color: #909193;\n}\n.u-light-color {\n  color: #c0c4cc;\n}\n.u-safe-area-inset-top {\n  padding-top: 0;\n  padding-top: constant(safe-area-inset-top);\n  padding-top: env(safe-area-inset-top);\n}\n.u-safe-area-inset-right {\n  padding-right: 0;\n  padding-right: constant(safe-area-inset-right);\n  padding-right: env(safe-area-inset-right);\n}\n.u-safe-area-inset-bottom {\n  padding-bottom: 0;\n  padding-bottom: constant(safe-area-inset-bottom);\n  padding-bottom: env(safe-area-inset-bottom);\n}\n.u-safe-area-inset-left {\n  padding-left: 0;\n  padding-left: constant(safe-area-inset-left);\n  padding-left: env(safe-area-inset-left);\n}\n::-webkit-scrollbar {\n  display: none;\n  width: 0 !important;\n  height: 0 !important;\n  -webkit-appearance: none;\n  background: transparent;\n}\n/* 颜色变量 */\n/*文字颜色*/\n/* 边框颜色 */\n/* 图片加载中颜色 */\n/* 行为相关颜色 */\n/* 文字基本颜色 */\n/* 背景颜色 */\n/* 文字尺寸 */\n/* 图片尺寸 */\n/* Border Radius */\n/* 水平间距 */\n/* 垂直间距 */\n/* 透明度 */\n/* 文章场景相关 */\n/* 页面左右间距 */\n/* 文字尺寸 */\nbody {\n  background: #f8f8f8;\n}\n.container {\n  margin-top: 60px;\n}\n.avatar {\n  text-align: center;\n  margin: 0 auto;\n}\n.list-cell {\n  display: flex;\n  align-items: baseline;\n  padding: 20upx 30upx;\n  line-height: 60upx;\n  position: relative;\n  background: #fff;\n  justify-content: center;\n}\n.list-cell.log-out-btn {\n  margin-top: 40upx;\n}\n.list-cell.log-out-btn .cell-tit {\n  color: #007aff;\n  text-align: center;\n  margin-right: 0;\n}\n.list-cell.cell-hover {\n  background: #fafafa;\n}\n.list-cell.b-b:after {\n  left: 30upx;\n  padding: 0 2px;\n}\n.list-cell.m-t {\n  margin-top: 16upx;\n}\n.list-cell .cell-more {\n  align-self: baseline;\n  font-size: 12px;\n  width: 16px;\n  height: 16px;\n  color: #909399;\n  margin-left: 10upx;\n}\n.list-cell .cell-tit {\n  flex: 1;\n  font-size: 30upx;\n  color: #303133;\n  margin-right: 10upx;\n}\n.list-cell .cell-tip {\n  font-size: 28upx;\n  color: #909399;\n}\n.list-cell uni-switch {\n  -webkit-transform: translateX(16upx) scale(0.84);\n          transform: translateX(16upx) scale(0.84);\n}\n.top {\n  width: 100%;\n  height: 130px;\n  background: #7ECEFD;\n  padding-top: 15px;\n  position: relative;\n}\n.center {\n  width: 95%;\n  height: 100px;\n  background: white;\n  display: flex;\n  flex-direction: column;\n  margin: 0 auto;\n  border-radius: 5px;\n}\n.center_top {\n  display: flex;\n  flex-direction: row;\n  width: 80%;\n  height: 80px;\n  margin: 0 auto;\n  margin-top: 20rpx;\n  border-bottom: 1px solid #EEEEEE;\n}\n.center_img {\n  width: 66px;\n  height: 66px;\n  border-radius: 50%;\n  overflow: hidden;\n}\n.center_img uni-image {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n}\n.center_img .user_head {\n  width: 100%;\n  height: 100%;\n}\n.center_info {\n  display: flex;\n  flex-direction: column;\n  margin-top: 20rpx;\n  margin-left: 30px;\n}\n.center_name {\n  font-size: 20px;\n}\n.center_phone {\n  color: #BEBEBE;\n}\n.center_rank {\n  width: 50%;\n  height: 35px;\n  display: flex;\n  flex-direction: row;\n}\n.rank_text {\n  height: 35px;\n  line-height: 35px;\n  margin-left: 10rpx;\n  color: #AAAAAA;\n}\n.center_rank uni-image {\n  width: 35px;\n  height: 35px;\n}\n.center_score {\n  width: 50%;\n  height: 35px;\n  display: flex;\n  flex-direction: row;\n}\n.center_score uni-image {\n  width: 35px;\n  height: 35px;\n}\n.gif-wave {\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0;\n  z-index: 99;\n  mix-blend-mode: screen;\n  height: 100rpx;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
