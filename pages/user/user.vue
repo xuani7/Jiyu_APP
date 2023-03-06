@@ -4,14 +4,14 @@
         <view class="top">
             <view class="center">
                 <view class="center_top">
-                    <view class="center_img" @tap="gotoFeeds('/pages/my/set/set')">
+                    <view class="center_img" @tap="gotoFeeds('/uni_modules/uni-id-pages/pages/userinfo/userinfo')">
                         <!-- 这里可以放自己的静态头像 -->
                         <!-- #ifndef MP-WEIXIN -->
-                        <image :src="src"></image>
+                        <image :src="userInfo.avatar"></image>
                         <!-- #endif -->
                         <open-data type="userAvatarUrl" class="user_head"></open-data>
                     </view>
-                    <view class="center_info" @tap="gotoFeeds('/pages/my/set/set')">
+                    <view class="center_info" @tap="gotoFeeds('/uni_modules/uni-id-pages/pages/userinfo/userinfo')">
                         <view class="center_name">
                             <!-- 这里可以放自己的名称图片 -->
                             <!-- #ifndef MP-WEIXIN -->
@@ -25,16 +25,18 @@
             </view>
         </view>
 
-        <view class="list-cell b-b m-t" @click="navTo('个人资料')" hover-class="cell-hover" :hover-stay-time="50">
+        <view class="list-cell b-b m-t" @click="navTo('/uni_modules/uni-id-pages/pages/userinfo/userinfo')"
+            hover-class="cell-hover" :hover-stay-time="50">
             <text class="cell-tit">个人资料</text>
             <image src="../../static/user/to.png" class="cell-more "></image>
         </view>
-        <view class="list-cell b-b" @click="navTo('我的收藏')" hover-class="cell-hover" :hover-stay-time="50">
+        <view class="list-cell b-b" @click="navTo('/pages/collect/collect')" hover-class="cell-hover"
+            :hover-stay-time="50">
             <text class="cell-tit">我的收藏</text>
             <image src="../../static/user/to.png" class="cell-more "></image>
         </view>
-        <view class="list-cell b-b" @click="navTo('切换用户')" hover-class="cell-hover" :hover-stay-time="50">
-            <text class="cell-tit">切换用户</text>
+        <view class="list-cell b-b" @click="clearStorage()" hover-class="cell-hover" :hover-stay-time="50">
+            <text class="cell-tit">清除缓存</text>
             <image src="../../static/user/to.png" class="cell-more "></image>
         </view>
 
@@ -42,20 +44,23 @@
             <text class="cell-tit">消息推送</text>
             <switch checked color="#7ECEFD" @change="switchChange" />
         </view>
-        <view class="list-cell m-t" @click="navTo('反馈帮助')" hover-class="cell-hover" :hover-stay-time="50">
+        <view class="list-cell m-t" @click="navTo('/uni_modules/uni-id-pages/pages/common/webview/webview')"
+            hover-class="cell-hover" :hover-stay-time="50">
             <text class="cell-tit">反馈帮助</text>
             <image src="../../static/user/to.png" class="cell-more "></image>
         </view>
-        <view class="list-cell" @click="navTo('用户协议')" hover-class="cell-hover" :hover-stay-time="50">
-        	   <text class="cell-tit">用户协议</text>
+        <view class="list-cell" @click="navTo('/uni_modules/uni-id-pages/pages/common/webview/webview')"
+            hover-class="cell-hover" :hover-stay-time="50">
+            <text class="cell-tit">用户协议</text>
             <image src="../../static/user/to.png" class="cell-more "></image>
         </view>
 
-        <view class="list-cell b-b" @click="navTo('关于机遇')" hover-class="cell-hover" :hover-stay-time="50">
+        <view class="list-cell b-b" @click="navTo('/uni_modules/uni-id-pages/pages/common/webview/webview')"
+            hover-class="cell-hover" :hover-stay-time="50">
             <text class="cell-tit">关于我们</text>
             <image src="../../static/user/to.png" class="cell-more "></image>
         </view>
-        <view class="list-cell" @click="">
+        <view class="list-cell" @click="checkUpdate()">
             <text class="cell-tit">检查更新</text>
             <text class="cell-tip">当前版本 1.0.3</text>
         </view>
@@ -66,43 +71,48 @@
 </template>
 
 <script>
-    import navBar from '../../components/navBar.vue'
     import {
-        mapMutations
-    } from 'vuex';
+        mutations
+    } from '@/uni_modules/uni-id-pages/common/store.js'
     export default {
-        components: {
-            navBar
-        },
         data() {
             return {
                 title: '个人设置',
-                src: '../../static/user/face.jpg',
                 userInfo: {
-                    name: "做一晚泥工"
+                    name: "",
+                    avatar: ''
                 },
                 //初始化点击位置的x坐标
                 startX: 0,
+                currentSize: '' 
 
             };
         },
         created() {
             this.selectImageUrl()
         },
+        onLoad() {
+            this.getUserInfo()
+            this.getStorageSize()
+        },
         methods: {
-            ...mapMutations(['logout']),
-
             navTo(url) {
-                this.$api.msg(`跳转到${url}`);
+                console.log(url);
+                uni.navigateTo({
+                    url: url
+                })
             },
             async selectImageUrl() {
-                let res = await this.$u.api.selectImageUrl({
-                    params: {
-                        user: this.userInfo.name
-                    }
-                })
-                this.image = res.data.data
-                console.log("this.image ", this.image)
+                console.log("this.image ")
+            },
+            getUserInfo() {
+                let dbJQL = uniCloud.databaseForJQL()
+                dbJQL.collection('uni-id-users').where("_id==$cloudEnv_uid")
+                    .field("avatar_file.url as avatar_url,nickname , username")
+                    .get().then(res => {
+                        this.userInfo.avatar = res.data[0].avatar_url
+                        this.userInfo.name = res.data[0].nickname ? res.data[0].nickname : res.data[0].username
+                    })
             },
             gotoFeeds(url) {
                 // 可以跳多级目录
@@ -116,7 +126,7 @@
                     content: '确定要退出登录么',
                     success: (e) => {
                         if (e.confirm) {
-                            this.logout();
+                            mutations.logout()
                             setTimeout(() => {
                                 uni.navigateBack();
                             }, 200)
@@ -128,6 +138,67 @@
             switchChange(e) {
                 let statusTip = e.detail.value ? '打开' : '关闭';
                 this.$api.msg(`${statusTip}消息推送`);
+            },
+
+            // 获取本地缓存大小
+            getStorageSize() {
+                let that = this;
+                plus.cache.calculate(function(size) {
+                    let sizeCache = parseInt(size);
+                    if (sizeCache == 0) {
+                        that.currentSize = "0B";
+                    } else if (sizeCache < 1024) {
+                        that.currentSize = sizeCache + "B";
+                    } else if (sizeCache < 1048576) {
+                        that.currentSize = (sizeCache / 1024).toFixed(2) + "KB";
+                    } else if (sizeCache < 1073741824) {
+                        that.currentSize = (sizeCache / 1048576).toFixed(2) + "MB";
+                    } else {
+                        that.currentSize = (sizeCache / 1073741824).toFixed(2) + "GB";
+                    }
+                });
+            },
+            // 清理缓存
+            clearStorage() {
+                let that = this;
+                let os = plus.os.name;
+                if (os == 'Android') {
+                    let main = plus.android.runtimeMainActivity();
+                    let sdRoot = main.getCacheDir();
+                    let files = plus.android.invoke(sdRoot, "listFiles");
+                    let len = files.length;
+                    console.log(files, len)
+                    for (let i = 0; i < len; i++) {
+                        let filePath = '' + files[i]; // 没有找到合适的方法获取路径，这样写可以转成文件路径  
+                        plus.io.resolveLocalFileSystemURL(filePath, function(entry) {
+                            if (entry.isDirectory) {
+                                entry.removeRecursively(function(entry) { //递归删除其下的所有文件及子目录
+                                    that.files = []
+                                    console.log("清除成功"+currentSize);
+                                    uni.showToast({
+                                        title: '清除成功：'+currentSize,
+                                        duration: 2000
+                                    });
+                                    that.getStorageSize(); // 重新计算缓存  
+                                }, function(e) {
+                                    console.log(e.message)
+                                });
+                            } else {
+                                entry.remove();
+                            }
+                        }, function(e) {
+                            console.log('文件路径读取失败')
+                        });
+                    }
+                } else { // ios  
+                    plus.cache.clear(function() {
+                        uni.showToast({
+                            title: '清除成功：'+currentSize,
+                            duration: 2000
+                        });
+                        that.getStorageSize();
+                    });
+                }
             },
 
             /**
@@ -162,7 +233,11 @@
                     }
                 }
             },
-
+            checkUpdate() {
+                uni.showToast({
+                    title: '已是最新版本~'
+                })
+            }
         }
     }
 </script>

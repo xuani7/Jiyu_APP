@@ -16,6 +16,7 @@
             @clickCollect="clickCollect(item._id)" 
             @clickShare="clickShare(item._id)">
         </Dynamic>
+        <backTop :src="backTop.src"  :scrollTop="backTop.scrollTop"></backTop>
         <loadMore mode="loading1" color="#686870" :status="status" textSize="12px" textColor="#808080"></loadMore>
     </view>
 </template>
@@ -24,6 +25,7 @@
     import navBar from '../../components/navBar.vue'
     import Dynamic from "../../components/dynamic/Dynamic.vue"
     import loadMore from "../../components/loadMore/loadMore.vue"
+    import backTop from '@/components/back-top/back-top.vue'
     import {
         methods
     } from '../../uni_modules/uview-ui/libs/mixin/mixin'
@@ -32,10 +34,16 @@
         components: {
             navBar,
             Dynamic,
-            loadMore
+            loadMore,
+            backTop
         },
         data() {
             return {
+                backTop: {
+                	src: '../../static/back-top/top.png',
+                	scrollTop: 0
+                },
+                scrollTop: 0,
                 title: "社区",
                 startX: 0,
                 list: [],
@@ -43,6 +51,9 @@
                 page: 1,
                 flag: false
             }
+        },
+        onPageScroll(e) {
+        	this.backTop.scrollTop = e.scrollTop;
         },
         onReachBottom() {
             this.status = 'loading';
@@ -64,12 +75,13 @@
             // 点赞
             async clickThumbsup(e) {
                 let res = await this.getClickArticle(e)
+                // console.log(res);
                 if(res.result.data[0].isLike){
                     res.result.data[0].isLike = false
-                    res.result.data[0].likeNumber -= 1
+                    res.result.data[0].article_id[0].likeNumber -= 1
                 }else{
                     res.result.data[0].isLike = true
-                    res.result.data[0].likeNumber += 1
+                    res.result.data[0].article_id[0].likeNumber += 1
                 }
                 uniCloud.callFunction({
                     name:'setArticleById',
@@ -100,7 +112,7 @@
                 let shareData = {
                     shareUrl:"https://bilibili.com/",
                     shareTitle:"快来看看吧~",
-                    shareContent:"分享的描述",
+                    shareContent:"",
                     shareImg:"http://qn.kemean.cn//upload/202004/18/1587189024467w6xj18b1.jpg",
                     appId : "wxd0e0881530ee4444", // 默认不传type的时候，必须传appId和appPath才会显示小程序图标
                     appPath : "pages/home/home",
@@ -123,7 +135,7 @@
             getClickArticle(id){
                 return uniCloud.callFunction({
                     name:'getArticleById',
-                    data:{"_id":id}
+                    data:{"id":id}
                 })
             },
             getArticles(e, page) {
@@ -174,6 +186,7 @@
                             // #ifdef APP-PLUS
                             uni.navigateTo({
                                 url: "/pages/user/user",
+                                // url: "/uni_modules/uni-id-pages/pages/userinfo/userinfo",
                                 animationType: 'fade-in',
                                 animationDuration: 300
                             })
@@ -187,10 +200,12 @@
             this.$nextTick(() => {
                 this.getArticles(0, this.page)
             })
+            
 
         },
         onPullDownRefresh() {
             this.$nextTick(() => {
+                this.list = []
                 this.page = 1
                 this.getArticles(1, this.page)
             });

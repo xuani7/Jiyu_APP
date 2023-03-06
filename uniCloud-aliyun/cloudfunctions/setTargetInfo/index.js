@@ -1,11 +1,14 @@
 'use strict';
-const db = uniCloud.database()
+
 exports.main = async (event, context) => {
+    const dbJQL = uniCloud.databaseForJQL({
+    		event,
+    		context 
+    })
 	let {targetText,targetDate} = event
 	targetDate -= Date.now()
-	let res =await db.collection('target').where({
-		"user_id":"2978saa77837"
-	}).update({
+	let res =await dbJQL.collection('target')
+    .where("user_id==$cloudEnv_uid").update({
 		"targetText" : targetText,
         "targetDate" : targetDate
 	})

@@ -1,6 +1,8 @@
 <script>
+    import uniIdPageInit from '@/uni_modules/uni-id-pages/init.js'
     export default {
-        onLaunch: function() {
+        onLaunch: async function() {
+            await uniIdPageInit()
             /* #ifdef APP-PLUS */
             uni.onTabBarMidButtonTap(() => {
                 uni.navigateTo({
@@ -10,6 +12,7 @@
                 })
             })
             /* #endif */
+            
         },
         onShow: function() {
 
@@ -24,7 +27,6 @@
     /*每个页面公共css */
     @import '@/uni_modules/uni-scss/index.scss';
     @import url("@/static/css/iconfont/iconfont.css");
-
     /* #ifndef APP-NVUE */
     @import '@/static/customicons.css';
 
