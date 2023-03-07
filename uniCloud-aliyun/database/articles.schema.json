@@ -1,0 +1,61 @@
+{
+	"bsonType": "object",
+	"required": ["user_id", "content"],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": true,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"title": "用户id",
+			"description": "文章作者的用户id，默认",
+			"foreignKey": "uni-id-users._id",
+			"forceDefaultValue": {
+				"$env": "uid"
+			}
+		},
+		"publishTime": {
+			"bsonType": "timestamp",
+			"title": "发布时间",
+			"description": "文章的发布时间，默认为现在",
+			"forceDefaultValue": {
+				"$env": "now"
+			}
+		},
+		"content": {
+			"bsonType": "string",
+			"title": "内容",
+			"description": "文章的内容，自己上传"
+		},
+		"imgList": {
+			"bsonType": "array",
+			"arrayType": "file",
+			"title": "图片",
+			"description": "文章的内容图片，自己上传",
+			"multiple": true,
+			"fileMediaType": "image",
+			"fileExtName": "jpg,jpeg,gif,png,webg",
+			"maxLength": 9
+		},
+		
+		"likeNumber": {
+			"bsonType": "int",
+			"title": "点赞数",
+			"description": "表示文章的点赞数，默认值为0",
+			"defaultValue": 0
+		},
+		"collectNumber": {
+			"bsonType": "int",
+			"title": "收藏数",
+			"description": "表示文章的收藏数，默认值为0",
+			"defaultValue": 0
+		}
+		
+	}
+}

@@ -270,7 +270,7 @@
             margin-top: 40upx;
 
             .cell-tit {
-                color: $uni-color-primary;
+                color: #ff7f66;
                 text-align: center;
                 margin-right: 0;
             }

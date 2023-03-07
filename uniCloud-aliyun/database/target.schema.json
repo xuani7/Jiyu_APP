@@ -1,0 +1,40 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": "auth.uid != null",
+		"update": "doc.user_id == auth.uid",
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"title": "用户id",
+			"description": "文章作者的用户id，默认",
+            "foreignKey": "uni-id-user._id",
+			"forceDefaultValue": {
+				"$env": "uid"
+			}
+		},
+		"targetDate": {
+			"bsonType": "timestamp",
+			"title": "目标时间",
+			"description": "用户自定义的目标完成时间"
+		},
+		"targetText": {
+			"bsonType": "string",
+			"title": "内容",
+			"description": "文章的内容，自己上传"
+		},
+		"dot_list": {
+			"bsonType": "array",
+			"arrayType": "string",
+			"title": "打卡日期列表",
+			"description": "打卡日期列表，自己上传"
+		}
+	}
+}

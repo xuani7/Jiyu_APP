@@ -144,9 +144,10 @@
             
             // 打卡
             updateDot(){
+                let dotList = this.dot_list
                 uniCloud.callFunction({
                     name:"updateDotList",
-                    data:this.dot_list
+                    data:{dotList}
                 }).then(res => {
                     if (res.result.updated) {
                         this.showToast()

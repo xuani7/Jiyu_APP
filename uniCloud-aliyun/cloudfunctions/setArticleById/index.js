@@ -4,20 +4,21 @@ exports.main = async (event, context) => {
     		event,
     		context 
     })
-	let {article_id,isLike,likeNumber,isCollect,collectNumber} = event
+	let {likeNumber,collectNumber,_id} = event
      
-    let articleId = article_id[0]._id
-	let resFlag =await dbJQL.collection('user-article')
-    .where("'user_id == $cloudEnv_uid && article_id =='+articleId").update({
+    let articleId = _id._value
+    let isLike = _id.user_article[0].isLike
+    let isCollect = _id.user_article[0].isCollect
+	let resFlag =await dbJQL.collection('user_article')
+    .where(`user_id == $cloudEnv_uid && article_id == '${articleId}'`).update({
 		"isLike" : isLike,
         "isCollect" : isCollect
 	})
-    let resNumber = 1
- //    let resNumber = await dbJQL.collection('articles')
- //    .where("_id == article_id[0]._id").update({
-	// 	"likeNumber": likeNumber,
- //        "collectNumber": collectNumber
-	// })
+    let resNumber = await dbJQL.collection('articles')
+    .where(`_id == '${articleId}'`).update({
+		"likeNumber": likeNumber,
+        "collectNumber": collectNumber
+	})
 	//返回数据给客户端
 	return {resFlag,resNumber}
 };

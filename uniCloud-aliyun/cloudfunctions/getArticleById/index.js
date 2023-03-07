@@ -6,9 +6,10 @@ exports.main = async (event, context) => {
     })
     let {id} = event
 	//返回数据给客户端
-    let userArticle = await dbJQL.collection('user-article').getTemp()
-    let article = await dbJQL.collection('articles').field("likeNumber,collectNumber,_id").getTemp()
-    let res = await dbJQL.collection(userArticle,article).where("user_id==$cloudEnv_uid").get()
+    console.log(id)
+    let userArticle = await dbJQL.collection('user_article').where(`user_id==$cloudEnv_uid`).getTemp()
+    let article = await dbJQL.collection('articles').where(`_id == "${id}"`).getTemp()
+    let res = await dbJQL.collection(article,userArticle).where(`user_id==$cloudEnv_uid `).get()
     
     // let userArticle = await dbJQL.collection('user-article').field("isLike,isCollect,article_id").getTemp()
     // let article = await dbJQL.collection('articles').getTemp()

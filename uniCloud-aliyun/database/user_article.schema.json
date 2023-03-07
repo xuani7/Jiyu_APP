@@ -1,0 +1,40 @@
+{
+	"bsonType": "object",
+	"required": ["user_id", "article_id"],
+	"permission": {
+		"read": true,
+		"create": "auth.uid != null",
+		"update": "doc.user_id == auth.uid",
+		"delete": "doc.user_id == auth.uid"
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"article_id": {
+			"bsonType": "string",
+			"description": "文章id",
+			"foreignKey": "articles._id"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"description": "收藏者id",
+			"forceDefaultValue": {
+				"$env": "uid"
+			},
+			"foreignKey": "uni-id-users._id"
+		},
+        "isLike": {
+        	"bsonType": "bool",
+        	"title": "是否点赞",
+        	"description": "表示当前用户对文章是否点赞，默认值为false",
+        	"defaultValue": false
+        },
+        "isCollect": {
+        	"bsonType": "bool",
+        	"title": "是否收藏",
+        	"description": "表示当前用户对文章是否收藏，默认值为false",
+        	"defaultValue": false
+        }
+	}
+}

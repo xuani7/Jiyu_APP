@@ -1,20 +1,20 @@
 <template>
     <view class="container" @touchstart="touchStart" @touchend="touchEnd">
         <navBar :title="title"></navBar>
-       <Dynamic v-for="(item,index) in list" :key="item._id" 
+       <Dynamic v-for="(item,index) in list" :key="item._id._value" 
             :imgList="item.imgList" 
-            :avatar="item.avatar"
-            :name="item.name" 
+            :avatar="item.user_id[0].avatarUrl"
+            :name="item.user_id[0].nickname?item.user_id[0].nickname:item.user_id[0].username" 
             :publishTime="item.publishTime" 
             :content="item.content" 
-            :isLike="item.isLike"
-            :isCollect="item.isCollect" 
+            :isLike="item._id.user_article[0].isLike?item._id.user_article[0].isLike:false"
+            :isCollect="item._id.user_article[0].isCollect?item._id.user_article[0].isCollect:false" 
             :likeNumber="item.likeNumber" 
             :collectNumber="item.collectNumber"
             @clickDynamic="clickDynamic(index)" 
-            @clickThumbsup="clickThumbsup(item._id)"
-            @clickCollect="clickCollect(item._id)" 
-            @clickShare="clickShare(item._id)">
+            @clickThumbsup="clickThumbsup(item._id._value)"
+            @clickCollect="clickCollect(item._id._value)" 
+            @clickShare="clickShare(item._id._value)">
         </Dynamic>
         <backTop :src="backTop.src"  :scrollTop="backTop.scrollTop"></backTop>
         <loadMore mode="loading1" color="#686870" :status="status" textSize="12px" textColor="#808080"></loadMore>
@@ -77,11 +77,11 @@
                 let res = await this.getClickArticle(e)
                 // console.log(res);
                 if(res.result.data[0].isLike){
-                    res.result.data[0].isLike = false
-                    res.result.data[0].article_id[0].likeNumber -= 1
+                    res.result.data[0]._id.user_article[0].isLike = false
+                    res.result.data[0].likeNumber -= 1
                 }else{
-                    res.result.data[0].isLike = true
-                    res.result.data[0].article_id[0].likeNumber += 1
+                    res.result.data[0]._id.user_article[0].isLike = true
+                    res.result.data[0].likeNumber += 1
                 }
                 uniCloud.callFunction({
                     name:'setArticleById',
@@ -94,10 +94,10 @@
             async clickCollect(e) {
                 let res = await this.getClickArticle(e)
                 if(res.result.data[0].isCollect){
-                    res.result.data[0].isCollect = false
+                    res.result.data[0]._id.user_article[0].isCollect = false
                     res.result.data[0].collectNumber -= 1
                 }else{
-                    res.result.data[0].isCollect = true
+                    res.result.data[0]._id.user_article[0].isCollect = true
                     res.result.data[0].collectNumber += 1
                 }
                 uniCloud.callFunction({
@@ -149,11 +149,13 @@
 
                     if (Object.keys(res.result.data).length !== 0) {
                         this.list.push(...res.result.data)
+                        console.log(this.list[0]._id.user_article[0].isLike);
                         this.flag = true
-                    }else if(Object.keys(res.result.data).length < 5){
+                    }else if(Object.keys(res.result.data).length < 5 && Object.keys(res.result.data).length > 0){
                         this.flag = false
                         this.status = "normal"
                     }else{
+                        this.page -= 1
                         this.flag = false
                     }
                 })
