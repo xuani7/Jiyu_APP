@@ -137,7 +137,6 @@
             //switch
             switchChange(e) {
                 let statusTip = e.detail.value ? '打开' : '关闭';
-                this.$api.msg(`${statusTip}消息推送`);
             },
 
             // 获取本地缓存大小

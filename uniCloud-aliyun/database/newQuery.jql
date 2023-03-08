@@ -48,3 +48,7 @@ db.collection('user-article')
 })
 
 db.collection('user_article').where(`isCollect==true && user_id=="64046491819ce84ffc05626b"`).field("isLike,isCollect,article_id").get()
+
+db.collection('articles').field('_id').get()
+
+db.collection('user_article').where('user_id == "64083e790c801c2ac9b16926"').count()

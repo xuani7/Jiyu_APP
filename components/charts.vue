@@ -156,6 +156,9 @@
         },
         mounted() {
             this.getServerData();
+            uni.$on('update',()=>{
+                this.getServerData()
+            })
         },
         methods: {
             getServerData() {

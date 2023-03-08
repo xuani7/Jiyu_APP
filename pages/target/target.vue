@@ -3,7 +3,7 @@
         <navBar :title="title"></navBar>
         <target @click.native="changeTarget" ref="target"></target>
         <lxCalendar :dot_lists="dot_lists"></lxCalendar>
-        <uni-card isShadow class="chartsContainer">
+        <uni-card isShadow class="chartsContainer" >
             <uCharts ref="uCharts"></uCharts>
         </uni-card>
         
@@ -71,10 +71,10 @@ import { calcPythagoreanTheorem } from '../../uni_modules/uni-id-pages/pages/use
                         this.showToast()
                     }
                 })
-                this.changeTarget()
-                this.onReset()
                 
+                this.onReset()
                 this.$refs.target.getTargetInfo()
+                this.changeTarget()
             },
             onReset() {
                 this.targetInfo = {
@@ -139,12 +139,22 @@ import { calcPythagoreanTheorem } from '../../uni_modules/uni-id-pages/pages/use
             		this.dot_lists = res.result.data[0].dot_list
             	})
             },
+            
+            articleInit(e){
+                uniCloud.callFunction({
+                    name:'articleInit',
+                    data:{}
+                }).then(res => {
+                    
+                })
+            },
         },
         onLoad() {
             this.$nextTick(function() {
                 this.$refs.uCharts.getServerData()
                 this.$refs.target.getTargetInfo()
                 this.getDotList()
+                this.articleInit()
             })
         }
     }

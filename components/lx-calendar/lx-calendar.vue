@@ -151,6 +151,7 @@
                 }).then(res => {
                     if (res.result.updated) {
                         this.showToast()
+                        uni.$emit('update',{})
                     }
                 })
             },

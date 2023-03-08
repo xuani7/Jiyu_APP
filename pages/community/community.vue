@@ -76,7 +76,7 @@
             async clickThumbsup(e) {
                 let res = await this.getClickArticle(e)
                 // console.log(res);
-                if(res.result.data[0].isLike){
+                if(res.result.data[0]._id.user_article[0].isLike){
                     res.result.data[0]._id.user_article[0].isLike = false
                     res.result.data[0].likeNumber -= 1
                 }else{
@@ -93,7 +93,7 @@
             // 收藏
             async clickCollect(e) {
                 let res = await this.getClickArticle(e)
-                if(res.result.data[0].isCollect){
+                if(res.result.data[0]._id.user_article[0].isCollect){
                     res.result.data[0]._id.user_article[0].isCollect = false
                     res.result.data[0].collectNumber -= 1
                 }else{
@@ -111,7 +111,7 @@
             async clickShare(e) {
                 let shareData = {
                     shareUrl:"https://bilibili.com/",
-                    shareTitle:"快来看看吧~",
+                    shareTitle:"快看我发现了什么宝藏~",
                     shareContent:"",
                     shareImg:"http://qn.kemean.cn//upload/202004/18/1587189024467w6xj18b1.jpg",
                     appId : "wxd0e0881530ee4444", // 默认不传type的时候，必须传appId和appPath才会显示小程序图标
@@ -149,7 +149,6 @@
 
                     if (Object.keys(res.result.data).length !== 0) {
                         this.list.push(...res.result.data)
-                        console.log(this.list[0]._id.user_article[0].isLike);
                         this.flag = true
                     }else if(Object.keys(res.result.data).length < 5 && Object.keys(res.result.data).length > 0){
                         this.flag = false

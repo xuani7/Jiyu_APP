@@ -31,7 +31,7 @@ export default {
     serviceUrl: 'http://static-mp-c46900f7-3df0-4339-844f-192e5ae54332.next.bspapp.com/markdown-share-docs/b25569b542a9b0f0cd7dbea2531579b1/', // 用户服务协议链接
     privacyUrl: 'http://static-mp-c46900f7-3df0-4339-844f-192e5ae54332.next.bspapp.com/markdown-share-docs/b25569b542a9b0f0cd7dbea2531579b1/', // 隐私政策条款链接
     // 哪些场景下显示，1.注册（包括登录并注册，如：微信登录、苹果登录、短信验证码登录）、2.登录（如：用户名密码登录）
-    scope: [
+    scope: [/*  */
       'register', 'login', 'realNameVerify'
     ]
   },
@@ -63,5 +63,5 @@ export default {
 	 *   "allowSkip": true
 	 * }
 	 * */
-  setPasswordAfterLogin: false
+  setPasswordAfterLogin: true
 }

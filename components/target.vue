@@ -2,7 +2,7 @@
     <view class="targetContainer">
         <uni-card isShadow>
 
-            <u-count-down :time="this.targetInfo.targetDate-0" format="DD:HH:mm:ss" autoStart millisecond @change="onChange">
+            <u-count-down :time="this.targetInfo.targetDate-this.nowTime" format="DD:HH:mm:ss" autoStart millisecond @change="onChange">
                 <view class="time">
                     <view class="time__custom">
                         <text class="time__custom__item">{{ timeData.days>=10?timeData.days:'0'+timeData.days}}</text>
@@ -67,10 +67,11 @@
 					data:{}
 				}).then(res => {
 					this.targetInfo = res.result.data[0]
-					this.nowTime = Date.now()
+                    this.nowTime = Date.now()
 				})
 			},
         },
+
     }
 </script>
 

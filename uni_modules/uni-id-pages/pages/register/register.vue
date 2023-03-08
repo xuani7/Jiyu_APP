@@ -119,6 +119,7 @@
 					this['focus' + key] = true
 				})
 			},
+            
 			submitForm(params) {
 				uniIdCo.registerUser(this.formData).then(e => {
 						this.loginSuccess(e)
