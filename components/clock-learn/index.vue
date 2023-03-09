@@ -1,7 +1,7 @@
 <template>
 	<view class="page flex-center" :class="cross?'column':'row'">
         <div class="back" @click="back()">
-            <image src="@/static/image/退出 .png" style="width: 30px;height: 30px;"></image>
+            <image src="@/static/image/back.png" style="width: 30px;height: 30px;"></image>
         </div>
 		<view :style="'width:'+long+'px;'+'height:'+long+'px;'" class="clock" @click="showApm()">
 			<clock :num='hours' :long="long" :apm="apm" style="height: 100% !important;"></clock>

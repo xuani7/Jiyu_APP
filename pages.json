@@ -171,7 +171,7 @@
 
         /* #ifdef APP-PLUS */
         "midButton": {
-            "iconPath": "static/image/秒表1.png",
+            "iconPath": "static/image/clock.png",
             "iconWidth": "40px",
             "width": "70px"
         },
@@ -180,13 +180,13 @@
         "list": [{
             "pagePath": "pages/target/target",
             "text": "目标",
-            "iconPath": "static/image/目标.png",
-            "selectedIconPath": "static/image/目标被选.png"
+            "iconPath": "static/image/target.png",
+            "selectedIconPath": "static/image/targetS.png"
         }, {
             "pagePath": "pages/community/community",
             "text": "社区",
-            "iconPath": "static/image/社区.png",
-            "selectedIconPath": "static/image/社区被选.png"
+            "iconPath": "static/image/commi.png",
+            "selectedIconPath": "static/image/commiS.png"
         }]
     }
 }
