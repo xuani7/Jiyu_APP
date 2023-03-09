@@ -3,9 +3,26 @@
     export default {
         onLaunch: async function() {
             
+            // #ifdef APP-PLUS
+                plus.navigator.closeSplashscreen();
+                var w = plus.webview.open(
+                    'hybrid/html/advertise/advertise.html',
+                    '本地地址', {
+                        top: 0,
+                        bottom: 0,
+                        zindex: 999
+                    },
+                    'fade-in',
+                    500
+                );
+                //设置定时器，4s后关闭启动广告页
+                setTimeout(function() {
+                    plus.webview.close(w);
+                }, 2000);
+                // #endif
             
             await uniIdPageInit()
-            /* #ifdef APP-PLUS */
+            // #ifdef APP-PLUS
             uni.onTabBarMidButtonTap(() => {
                 uni.navigateTo({
                     url:'/pages/timer/timer',
@@ -13,7 +30,7 @@
                     animationType:'fade-in'
                 })
             })
-            /* #endif */
+            // #endif 
             
         },
         onShow: function() {
