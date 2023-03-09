@@ -129,6 +129,7 @@
 
 				uniIdCo.login(data).then(e => {
 					this.loginSuccess(e)
+                    
 				}).catch(e => {
 					if (e.errCode == 'uni-id-captcha-required') {
 						this.needCaptcha = true

@@ -5,6 +5,24 @@
             "navigationBarTitleText": "目标"
         }
     },{
+        "path": "pages/role/role",
+        "style": {
+            "navigationBarTitleText": "管理员角色",
+            "enablePullDownRefresh": true
+        }
+    },{
+        "path": "pages/role/add",
+        "style": {
+            "navigationBarTitleText": "添加文章"
+
+        }
+    },{
+        "path": "pages/role/update",
+        "style": {
+            "navigationBarTitleText": "修改文章"
+
+        }
+    },{
         "path": "pages/collect/collect",
         "style": {
             "navigationBarTitleText": "我的收藏",
@@ -28,6 +46,7 @@
     }, {
         "path": "pages/user/user",
         "style": {
+            "navigationBarTitleText": "用户中心",
             "app-plus": {
                 "animationType": "zoom-fade-in",
                 "animationDuration": 300

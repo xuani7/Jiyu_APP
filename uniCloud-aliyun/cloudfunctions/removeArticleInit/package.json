@@ -1,0 +1,7 @@
+{
+  "name": "removeArticleInit",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

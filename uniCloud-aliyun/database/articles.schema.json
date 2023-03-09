@@ -3,9 +3,9 @@
 	"required": ["user_id", "content"],
 	"permission": {
 		"read": true,
-		"create": false,
+		"create": true,
 		"update": true,
-		"delete": false
+		"delete": true
 	},
 	"properties": {
 		"_id": {
@@ -35,12 +35,12 @@
 		},
 		"imgList": {
 			"bsonType": "array",
-			"arrayType": "file",
+			"arrayType": "string",
 			"title": "图片",
 			"description": "文章的内容图片，自己上传",
 			"multiple": true,
-			"fileMediaType": "image",
-			"fileExtName": "jpg,jpeg,gif,png,webg",
+			// "fileMediaType": "image",
+			// "fileExtName": "jpg,jpeg,gif,png,webg",
 			"maxLength": 9
 		},
 		

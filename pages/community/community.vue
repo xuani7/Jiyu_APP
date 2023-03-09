@@ -17,6 +17,7 @@
             @clickShare="clickShare(item._id._value)">
         </Dynamic>
         <backTop :src="backTop.src"  :scrollTop="backTop.scrollTop"></backTop>
+        <role :src="role.src" :scrollTop="role.scrollTop" :isShow="role.isShow"></role>
         <loadMore mode="loading1" color="#686870" :status="status" textSize="12px" textColor="#808080"></loadMore>
     </view>
 </template>
@@ -26,6 +27,7 @@
     import Dynamic from "../../components/dynamic/Dynamic.vue"
     import loadMore from "../../components/loadMore/loadMore.vue"
     import backTop from '@/components/back-top/back-top.vue'
+    import role from "../../components/role.vue"
     import {
         methods
     } from '../../uni_modules/uview-ui/libs/mixin/mixin'
@@ -35,13 +37,19 @@
             navBar,
             Dynamic,
             loadMore,
-            backTop
+            backTop,
+            role
         },
         data() {
             return {
                 backTop: {
                 	src: '../../static/back-top/top.png',
                 	scrollTop: 0
+                },
+                role:{
+                    src:'../../static/user/help.png',
+                    scrollTop: 0,
+                    isShow:false
                 },
                 scrollTop: 0,
                 title: "社区",
@@ -72,6 +80,15 @@
             this.list = []
         },
         methods: {
+            async checkRole(){
+                const dbJQL = uniCloud.databaseForJQL()
+                let res = await dbJQL.collection("uni-id-users").where('_id == $cloudEnv_uid && role == "admin"').count()
+                if(res.total != 0){
+                    this.role.isShow = true
+                    console.log(this.role.isShow);
+                }
+            },
+            
             // 点赞
             async clickThumbsup(e) {
                 let res = await this.getClickArticle(e)
@@ -200,6 +217,7 @@
         onLoad() {
             this.$nextTick(() => {
                 this.getArticles(0, this.page)
+                this.checkRole()
             })
             
 

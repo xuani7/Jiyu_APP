@@ -26,7 +26,7 @@
 				    animationDuration: 300
 				});
 				// #endif
-            }
+            },
         },
     }
 </script>

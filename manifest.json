@@ -12,7 +12,7 @@
         "nvueCompiler" : "uni-app",
         "nvueStyleCompiler" : "uni-app",
         "splashscreen" : {
-            "alwaysShowBeforeRender" : true,
+            "alwaysShowBeforeRender" : false,
             "waiting" : true,
             "autoclose" : true,
             "delay" : 0
@@ -75,6 +75,9 @@
                         "spotlight@3x" : "unpackage/res/icons/120x120.png"
                     }
                 }
+            },
+            "splashscreen" : {
+                "useOriginalMsgbox" : true
             }
         }
     },
