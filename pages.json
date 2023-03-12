@@ -23,6 +23,12 @@
 
         }
     },{
+        "path": "pages/opinion/opinion",
+        "style": {
+            "navigationBarTitleText": "意见反馈",
+			"navigationStyle": "custom"
+        }
+    },{
         "path": "pages/collect/collect",
         "style": {
             "navigationBarTitleText": "我的收藏",
