@@ -44,7 +44,7 @@
             <text class="cell-tit">消息推送</text>
             <switch checked color="#7ECEFD" @change="switchChange" />
         </view>
-        <view class="list-cell m-t" @click="navTo('/uni_modules/uni-id-pages/pages/common/webview/webview')"
+        <view class="list-cell m-t" @click="navTo('/pages/opinion/opinion')"
             hover-class="cell-hover" :hover-stay-time="50">
             <text class="cell-tit">反馈帮助</text>
             <image src="../../static/user/to.png" class="cell-more "></image>
