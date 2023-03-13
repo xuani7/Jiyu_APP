@@ -49,13 +49,13 @@
             <text class="cell-tit">反馈帮助</text>
             <image src="../../static/user/to.png" class="cell-more "></image>
         </view>
-        <view class="list-cell" @click="navTo('/uni_modules/uni-id-pages/pages/common/webview/webview')"
+        <view class="list-cell" @click="navTo('/pages/privacy/privacy')"
             hover-class="cell-hover" :hover-stay-time="50">
             <text class="cell-tit">用户协议</text>
             <image src="../../static/user/to.png" class="cell-more "></image>
         </view>
 
-        <view class="list-cell b-b" @click="navTo('/uni_modules/uni-id-pages/pages/common/webview/webview')"
+        <view class="list-cell b-b" @click="navTo('/pages/privacy/privacy')"
             hover-class="cell-hover" :hover-stay-time="50">
             <text class="cell-tit">关于我们</text>
             <image src="../../static/user/to.png" class="cell-more "></image>
