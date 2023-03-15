@@ -35,6 +35,11 @@
             <text class="cell-tit">我的收藏</text>
             <image src="../../static/user/to.png" class="cell-more "></image>
         </view>
+		<view class="list-cell b-b" @click="navTo('/pages/targetList/targetList')" hover-class="cell-hover"
+		    :hover-stay-time="50">
+		    <text class="cell-tit">目标历史</text>
+		    <image src="../../static/user/to.png" class="cell-more "></image>
+		</view>
         <view class="list-cell b-b" @click="clearStorage()" hover-class="cell-hover" :hover-stay-time="50">
             <text class="cell-tit">清除缓存</text>
             <image src="../../static/user/to.png" class="cell-more "></image>

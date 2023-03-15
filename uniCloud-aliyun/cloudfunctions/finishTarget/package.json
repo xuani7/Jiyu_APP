@@ -1,0 +1,7 @@
+{
+  "name": "finishTarget",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

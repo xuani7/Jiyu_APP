@@ -1,0 +1,7 @@
+{
+  "name": "addTargetList",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

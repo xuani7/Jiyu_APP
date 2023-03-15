@@ -62,8 +62,9 @@ import { calcPythagoreanTheorem } from '../../uni_modules/uni-id-pages/pages/use
             }
         },
         methods: {
-            onSubmit() {
-                uniCloud.callFunction({
+            async onSubmit() {
+				
+                await uniCloud.callFunction({
                     name: "setTargetInfo",
                     data: this.targetInfo
                 }).then(res => {
@@ -72,10 +73,20 @@ import { calcPythagoreanTheorem } from '../../uni_modules/uni-id-pages/pages/use
                     }
                 })
                 
+				await this.addTargetList()
                 this.onReset()
-                this.$refs.target.getTargetInfo()
+                await this.$refs.target.getTargetInfo()
                 this.changeTarget()
             },
+			async addTargetList(){
+				await uniCloud.callFunction({
+					name:'addTargetList',
+					data:this.targetInfo
+				}).then(res => {
+					console.log(res)
+				})
+			},
+			
             onReset() {
                 this.targetInfo = {
                     targetText: '',

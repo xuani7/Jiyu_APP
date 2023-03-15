@@ -40,6 +40,11 @@
             "navigationBarTitleText": "我的收藏",
             "enablePullDownRefresh": true
         }
+    }, {
+        "path": "pages/targetList/targetList",
+        "style": {
+            "navigationBarTitleText": "目标列表"
+        }
     },  {
         "path": "pages/timer/timer",
         "style": {
