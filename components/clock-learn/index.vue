@@ -1,8 +1,11 @@
 <template>
 	<view class="page flex-center" :class="cross?'column':'row'">
-        <div class="back" @click="back()">
-            <image src="@/static/image/back.png" style="width: 30px;height: 30px;"></image>
-        </div>
+		<div class="back" @click="back()">
+			<image src="@/static/image/back.png" style="width: 30px;height: 30px;"></image>
+		</div>
+		<div class="screen" @click="screen()">
+			<image src="@/static/image/lock.png" style="width: 30px;height: 30px;"></image>
+		</div>
 		<view :style="'width:'+long+'px;'+'height:'+long+'px;'" class="clock" @click="showApm()">
 			<clock :num='hours' :long="long" :apm="apm" style="height: 100% !important;"></clock>
 		</view>
@@ -20,146 +23,173 @@
 <script>
 	import clock from './clock.vue'
 	export default {
-		components:{
+		components: {
 			clock
 		},
-		data(){
-			return{
-				hours:'',
-				minutes:'',
-				seconds:'',
-				width:0,
-				long:0,
-				cross:false,
-				isshow:true,
-				isapm:true,
-				apm:''
+		data() {
+			return {
+				hours: '',
+				minutes: '',
+				seconds: '',
+				width: 0,
+				long: 0,
+				cross: false,
+				isshow: true,
+				isapm: true,
+				apm: ''
 			}
 		},
 		created() {
 			this.timer();
 			this.init();
 			// #ifdef APP-PLUS
-				// 屏幕常亮
-				uni.setKeepScreenOn({
-					keepScreenOn: true
-				});
-				// 隐藏状态栏
-				plus.navigator.setFullscreen(true);
+			// 屏幕常亮
+			uni.setKeepScreenOn({
+				keepScreenOn: true
+			});
+			// 隐藏状态栏
+			plus.navigator.setFullscreen(true);
 			// #endif
 		},
-		watch:{
-			hours(){
+		watch: {
+			hours() {
 				// console.log('时');
 			},
-			minutes(){
+			minutes() {
 				// console.log('分');
 			},
-			seconds(){
+			seconds() {
 				// console.log(this.seconds + '秒');
 			}
 		},
 		onResize() {
 			this.init();
 		},
-	    methods: {
-			init(){
+		methods: {
+			init() {
 				uni.getSystemInfo({
-					success:(res)=>{
-                        console.log(res);
-						if(res.windowWidth>res.windowHeight){
+					success: (res) => {
+						console.log(res);
+						if (res.windowWidth > res.windowHeight) {
 							this.width = res.windowWidth;
 							this.cross = false;
-						}else{
+						} else {
 							this.width = res.windowHeight;
 							this.cross = true;
 						}
-						if(this.isshow){
-							this.long = parseInt(this.width/3)-30;
-						}else{
-							this.long = parseInt(this.width/2)-100;
+						if (this.isshow) {
+							this.long = parseInt(this.width / 3) - 30;
+						} else {
+							this.long = parseInt(this.width / 2) - 100;
 						}
 					}
 				})
 			},
-			timer(){
+			timer() {
 				let date = new Date()
 				let hours = date.getHours().toString()
-				this.apm='';
-				if(this.isapm && hours<=12){
-					this.apm='AM'
+				this.apm = '';
+				if (this.isapm && hours <= 12) {
+					this.apm = 'AM'
 				}
-				if(this.isapm && hours>12){
-					hours = hours-12;
-					this.apm='PM'
+				if (this.isapm && hours > 12) {
+					hours = hours - 12;
+					this.apm = 'PM'
 				}
-				
+
 				// console.error(hours)
 				// hours = hours>=10?hours:(hours);
 				let minutes = date.getMinutes().toString();
-				minutes = minutes>=10?minutes:('0'+minutes);
+				minutes = minutes >= 10 ? minutes : ('0' + minutes);
 				let seconds = date.getSeconds().toString();
-				seconds = seconds>=10?seconds:('0'+seconds);
-				if(this.hours != hours){
+				seconds = seconds >= 10 ? seconds : ('0' + seconds);
+				if (this.hours != hours) {
 					this.hours = hours;
 				}
-				if(this.minutes != minutes){
+				if (this.minutes != minutes) {
 					this.minutes = minutes;
 				}
-				if(this.seconds != seconds){
+				if (this.seconds != seconds) {
 					this.seconds = seconds;
 				}
-				setTimeout(()=>{this.timer()},100);
+				setTimeout(() => {
+					this.timer()
+				}, 100);
 			},
-			hidden(){
-				this.isshow=!this.isshow;
+			hidden() {
+				this.isshow = !this.isshow;
 				this.init();
 			},
-			showApm(){
-				this.isapm=!this.isapm;
+			showApm() {
+				this.isapm = !this.isapm;
 			},
-            back(){
-                uni.navigateBack()
-            }
-	    }
+			back() {
+				uni.navigateBack()
+			},
+			screen() {
+				// uni.navigateBack()
+			
+				uni.navigateTo({
+					url:'/pages/sereen/sereen'
+				})
+			}
+		}
 	}
 </script>
 
 <style>
-	page{
+	page {
 		background-color: #000000;
 	}
-	.page{
+
+	.page {
 		height: 100vh;
-        width: 100%;
+		width: 100%;
 		background-color: #000000;
 	}
-	.flex-center{
+
+	.flex-center {
 		display: flex;
-        position: relative;
+		position: relative;
 		justify-content: center;
 		align-items: center;
 	}
-	.row{
+
+	.row {
 		flex-direction: row;
 	}
-	.column{
+
+	.column {
 		flex-direction: column;
 	}
-	.clock{
+
+	.clock {
 		padding: 2%;
-        transform: rotate(90deg);
+		transform: rotate(90deg);
 	}
-    .back{
-        transform: rotate(90deg);
-        background-color: rgba(68,68,70,0.2);
-        border-radius: 50%;
-        padding: 5px;
-        width: 30px;
-        height: 30px;
-        position: absolute;
-       bottom:50rpx; 
-        right:20rpx;
-        z-index: 999;
-    }
+
+	.back {
+		transform: rotate(90deg);
+		background-color: rgba(68, 68, 70, 0.2);
+		border-radius: 50%;
+		padding: 5px;
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		bottom: 50rpx;
+		right: 20rpx;
+		z-index: 999;
+	}
+	.screen {
+		transform: rotate(90deg);
+		background-color: rgba(68, 68, 70, 0.2);
+		border-radius: 50%;
+		padding: 5px;
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		bottom: 200rpx;
+		right: 20rpx;
+		z-index: 999;
+	}
 </style>

@@ -92,6 +92,29 @@
             "splashscreen" : {
                 "useOriginalMsgbox" : true
             }
+        },
+        "nativePlugins" : {
+            "XYZ-ScreenManagerModule" : {
+                "插件需要配置的参数名称, 如appid" : "__UNI__EC8BD64",
+                "__plugin_info__" : {
+                    "name" : "Android 锁屏和解锁",
+                    "description" : "Android 锁屏和解锁",
+                    "platforms" : "Android",
+                    "url" : "https://ext.dcloud.net.cn/plugin?id=2536",
+                    "android_package_name" : "uni.UNIEC8BD64",
+                    "ios_bundle_id" : "",
+                    "isCloud" : true,
+                    "bought" : 1,
+                    "pid" : "2536",
+                    "parameters" : {
+                        "插件需要配置的参数名称, 如appid" : {
+                            "des" : "参数描述",
+                            "key" : "AndroidManifest.xml中添加meta-data节点的android:name属性值, 如GETUI_APPID",
+                            "value" : ""
+                        }
+                    }
+                }
+            }
         }
     },
     /* SDK配置 */

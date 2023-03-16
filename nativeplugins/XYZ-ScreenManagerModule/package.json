@@ -1,0 +1,39 @@
+{
+  "name": "XYZ-ScreenManagerModule",
+  "id": "XYZ-ScreenManagerModule",
+  "version": "1.0",
+  "description": "锁屏及解锁",
+  "_dp_type":"nativeplugin",
+  "_dp_nativeplugin":{
+    "android": {
+      "plugins": [
+        {
+          "type": "module",
+          "name": "XYZ-ScreenManagerModule",
+          "class": "com.xyz.plugin.ScreenManager"
+        }
+      ],
+      "hooksClass": "可选, 事件钩子注册类名",
+      "integrateType": "aar",
+      "dependencies": [],
+      "compileOptions": {
+        "sourceCompatibility": "1.8",
+        "targetCompatibility": "1.8"
+      },
+      "abis": [],
+      "minSdkVersion": "16",
+      "permissions": [
+          "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
+          "<uses-permission android:name=\"android.permission.DISABLE_KEYGUARD\" />",
+		  "<uses-permission android:name=\"android.permission.USES_POLICY_FORCE_LOCK\" />"
+      ],
+      "parameters": {
+        "插件需要配置的参数名称, 如appid": {
+          "des": "参数描述",
+          "key": "AndroidManifest.xml中添加meta-data节点的android:name属性值, 如GETUI_APPID",
+          "placeholder": "build.gradle中添加到manifestPlaceholders中的字段名"
+        }
+      }
+    }
+  }
+}

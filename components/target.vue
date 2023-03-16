@@ -31,7 +31,7 @@
 			<view class="target">
 				<u-swipe-action >
 					<u-swipe-action-item :options="options" btn-width="180" @click.native.stop="click">
-						<view class="swipe-action u-border-top u-border-bottom">
+						<view class="swipe-action">
 							<view class="swipe-action__content">
 								<text class="swipe-action__content__text">{{this.targetInfo.targetText}}</text>
 							</view>
@@ -83,6 +83,10 @@
 					data:this.targetInfo
 				}).then(res => {
 					console.log(res);
+				})
+				uni.showToast({
+					title: '恭喜你完成目标！！！',
+					duration: 2000
 				})
 			}
 		},
