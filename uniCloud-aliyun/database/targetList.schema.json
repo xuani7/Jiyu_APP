@@ -15,7 +15,7 @@
 		"user_id": {
 			"bsonType": "string",
 			"title": "用户id",
-			"description": "文章作者的用户id，默认",
+			"description": "当前用户id，默认",
 			"foreignKey": "uni-id-user._id",
 			"forceDefaultValue": {
 				"$env": "uid"

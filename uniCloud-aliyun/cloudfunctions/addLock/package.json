@@ -1,0 +1,7 @@
+{
+  "name": "addLock",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

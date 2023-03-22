@@ -1,0 +1,7 @@
+{
+  "name": "removeLockTime",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

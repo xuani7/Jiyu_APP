@@ -1,0 +1,43 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": "auth.uid != null",
+		"update": "doc.user_id == auth.uid",
+		"delete": "doc.user_id == auth.uid"
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"title": "用户id",
+			"description": "当前用户id，默认",
+			"foreignKey": "uni-id-user._id",
+			"forceDefaultValue": {
+				"$env": "uid"
+			}
+		},
+		"lock_list": {
+			"bsonType": "array",
+			"arrayType": "object",
+			"title": "锁屏时间列表",
+			"description": "记录定时锁屏的时间列表",
+			"properties": {
+				"lockTime": {
+					"bsonType": "string",
+					"title": "锁屏时间",
+					"description": "用户自定义锁屏时间，自己上传"
+				},
+				"isDo": {
+					"bsonType": "bool",
+					"title": "是否定时",
+					"defaultValue": false
+				}
+			}
+		}
+	}
+}
