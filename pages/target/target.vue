@@ -6,6 +6,9 @@
         <uni-card isShadow class="chartsContainer" >
             <uCharts ref="uCharts"></uCharts>
         </uni-card>
+		<uni-card isShadow class="chartsContainer" >
+		    <Charts ref="Charts"></Charts>
+		</uni-card>
         
         <u-popup :show="show" mode="center" border-radius="14" @close="changeTarget" width="auto" height="auto">
             <u-card margin="30rpx" class="form">
@@ -38,13 +41,15 @@
     import lxCalendar from "../../components/lx-calendar/lx-calendar.vue"
     import target from "../../components/target.vue"
     import uCharts from "../../components/charts.vue"
+	import Charts from "../../components/ucharts.vue"
 import { calcPythagoreanTheorem } from '../../uni_modules/uni-id-pages/pages/userinfo/cropImage/limeClipper/utils'
     export default {
         components: {
             navBar,
             lxCalendar,
             target,
-            uCharts
+            uCharts,
+			Charts
         },
         data() {
             return {
@@ -163,6 +168,7 @@ import { calcPythagoreanTheorem } from '../../uni_modules/uni-id-pages/pages/use
         onLoad() {
             this.$nextTick(function() {
                 this.$refs.uCharts.getServerData()
+				this.$refs.Charts.getServerData()
                 this.$refs.target.getTargetInfo()
                 this.getDotList()
                 this.articleInit()

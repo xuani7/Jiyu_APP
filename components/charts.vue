@@ -171,7 +171,7 @@
                 }).then(res => {
                     dot_lists = res.result.data[0].dot_list
                     // filterData = dot_lists.filter(item => new RegExp(('-'+ 2 +'-'),"i").test(item))
-                    for (var i = 1; i < 12; i++) {
+                    for (var i = 1; i <= 12; i++) {
                         filterData = dot_lists.filter(item => new RegExp(('-'+ i +'-'),"i").test(item))
                         DayData.push(filterData.length)
                     }

@@ -1,0 +1,43 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": "auth.uid != null",
+		"update": "doc.user_id == auth.uid",
+		"delete": "doc.user_id == auth.uid"
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"title": "用户id",
+			"description": "当前用户id，默认",
+			"foreignKey": "uni-id-user._id",
+			"forceDefaultValue": {
+				"$env": "uid"
+			}
+		},
+		"focus_list": {
+			"bsonType": "array",
+			"arrayType": "object",
+			"title": "专注时间列表",
+			"description": "记录专注时间列表",
+			"properties": {
+				"focusDate": {
+					"bsonType": "string",
+					"title": "日期",
+					"description": "记录专注时间的日期"
+				},
+				"focusTime": {
+					"bsonType": "int",
+					"title": "专注时间",
+					"description": "用户专注时间"
+				}
+			}
+		}
+	}
+}

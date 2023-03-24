@@ -1,0 +1,7 @@
+{
+  "name": "setFocusTime",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

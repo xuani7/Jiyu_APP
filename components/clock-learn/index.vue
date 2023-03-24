@@ -28,6 +28,12 @@
 		},
 		data() {
 			return {
+				date : "",
+				dayNum:0,
+				year:0,
+				mouth:0,
+				day:0,
+				focusTime: 0,
 				hours: '',
 				minutes: '',
 				seconds: '',
@@ -42,6 +48,8 @@
 		created() {
 			this.timer();
 			this.init();
+			this.getMouth()
+			this.addFocusTime()
 			// #ifdef APP-PLUS
 			// 屏幕常亮
 			uni.setKeepScreenOn({
@@ -50,6 +58,9 @@
 			// 隐藏状态栏
 			plus.navigator.setFullscreen(true);
 			// #endif
+		},
+		onHide() {
+			this.setFocusTime()
 		},
 		watch: {
 			hours() {
@@ -66,10 +77,72 @@
 			this.init();
 		},
 		methods: {
+			addFocusTime(){
+				this.focusTime += 1
+				setTimeout(() => {
+					this.addFocusTime()
+				},1000)
+			},
+			getMouth(){
+				let myDate = new Date()
+				let Mouth = myDate.getMonth() + 1
+				this.mouth = Mouth
+				this.year = myDate.getFullYear()
+				this.day = myDate.getDate()
+				this.date = this.year+"/"+this.mouth+"/"+this.day
+				let DayNum = 0
+				if(Mouth == 2){
+					DayNum = 28
+				}
+				if ([1,3,5,7,8,10,12].indexOf(Mouth) == -1){
+					DayNum = 30
+				}else{
+					DayNum = 31
+				}
+				this.dayNum = DayNum
+			},
+			setFocusTime() {
+				console.log(this.focusTime);
+				let focus_lists = []
+				let filterData = []
+				let focusTime = this.focusTime
+				let focusDate = this.date
+				let DayData = []
+				
+				uniCloud.callFunction({
+				    name:'getFocusList'
+				}).then(res => {
+					if(res.result.data === []){
+						uniCloud.callFunction({
+							name:'setNewFocusTime',
+							data:{focusTime,focusDate}
+						}).then(res  => {
+							console.log(res);
+						})
+					}
+				    focus_lists = res.result.data[0].focus_list
+					filterData = focus_lists.filter(item => new RegExp(('/'+ this.mouth +'/'+this.day+"$"),"i").test(item.focusDate))
+					if(filterData.length == 0){
+						uniCloud.callFunction({
+							name:'setNewFocusTime',
+							data:{focusTime,focusDate}
+						}).then(res  => {
+							console.log(res);
+						})
+					}else{
+						focusTime += filterData[0].focusTime
+						uniCloud.callFunction({
+							name:'setFocusTime',
+							data:{focusTime,focusDate}
+						}).then(res  => {
+							console.log(res);
+						})
+					}
+				})
+			},
 			init() {
 				uni.getSystemInfo({
 					success: (res) => {
-						console.log(res);
 						if (res.windowWidth > res.windowHeight) {
 							this.width = res.windowWidth;
 							this.cross = false;
@@ -123,7 +196,9 @@
 			showApm() {
 				this.isapm = !this.isapm;
 			},
-			back() {
+			async back() {
+				await this.setFocusTime()
+				uni.$emit('update1',{})
 				uni.navigateBack()
 			},
 			screen() {

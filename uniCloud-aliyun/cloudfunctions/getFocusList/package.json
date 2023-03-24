@@ -1,0 +1,7 @@
+{
+  "name": "getFocusList",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}
